@@ -1,10 +1,10 @@
-# AI-Powered Research Starter Kit
+# GTS AI Research System Template
 
-A beginner-friendly framework for conducting rigorous, evidence-driven research with AI assistance.
+A reusable parent template for rigorous, evidence-driven, AI-assisted research systems.
 
-This project is for people who want the leverage of AI research tools without treating a fluent answer, a search result, or a citation as proof.
+GTS-AIRST defines reusable research invariants, state/provenance structures, qualification controls, derivative contracts, and reference implementations without treating model output, search results, or citations as proof.
 
-> **Licensing notice:** Current v0.2.0+ distributions are proprietary and all rights are reserved. Earlier v0.1.0 distributions were released under CC BY 4.0 and those historical grants are not revoked. See `LICENSE` and `LICENSE_HISTORY.md`.
+> **Identity and release state:** The current canonical identity is **GTS AI Research System Template (GTS-AIRST)** at `GannoK/GTS-AI-Research-System-Template`. The last declared release remains **v0.2.0 — Proprietary Baseline**; current `main` contains unreleased post-v0.2.0 hardening. Historical v0.1.0 CC BY 4.0 grants remain traceable and are not rewritten. See `AIRST_METADATA.json`, `LICENSE`, and `LICENSE_HISTORY.md`.
 
 ## I want you to break this
 
@@ -171,11 +171,13 @@ Current distributions are controlled by the proprietary license in `LICENSE`. Do
 
 Authorized users should follow [`INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md`](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md).
 
-## Current release
+## Current release and development state
 
-**v0.2.0 — Proprietary Baseline**
+**Last declared release: v0.2.0 — Proprietary Baseline**
 
-This release preserves the research methodology while changing the active distribution model from the historical CC BY 4.0 public preview to a proprietary, all-rights-reserved baseline. See `LICENSE_HISTORY.md`.
+Current development state: **unreleased post-v0.2.0 hardening**. A new release/version has not been declared.
+
+v0.2.0 preserved the research methodology while changing the active distribution model from the historical CC BY 4.0 public preview to a proprietary, all-rights-reserved baseline. Current hardening adds parent/derivative contracts, machine-readable invariants/components, qualification-domain separation, and executable/hybrid methodology eval infrastructure without changing the historical v0.2.0 meaning.
 
 A deeper standards-reconciliation pass remains planned before a 1.0 release, particularly for domain-specific formal research and high-assurance use.
 

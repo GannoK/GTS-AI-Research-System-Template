@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PROJECT_SLUG = "ai-powered-research-starter-kit"
+PROJECT_SLUG = "gts-ai-research-system-template"
 
 
 def git(*args: str) -> str:
