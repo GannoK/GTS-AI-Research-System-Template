@@ -17,6 +17,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Verify repository integrity
         run: python tools/verify_repository.py
@@ -24,5 +25,21 @@ jobs:
       - name: Run assurance policy audit
         run: python tools/assurance_audit.py
 
-      - name: Run assurance regression tests
+      - name: Validate derivative template contract
+        run: python tools/airst_validate.py --derivative-manifest 07_TEMPLATES/13_DERIVATIVE_MUTATION_MANIFEST_TEMPLATE.json --allow-template
+
+      - name: Run methodology eval harness self-test
+        run: python tools/run_methodology_evals.py --self-test
+
+      - name: Run assurance and hardening regression tests
         run: python -m unittest discover -s tests -v
+
+      - name: Generate qualification candidate bundle
+        run: python tools/generate_qualification_bundle.py --output dist/airst-qualification-bundle.json
+
+      - name: Upload qualification candidate
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: airst-qualification-${{ github.event.pull_request.head.sha || github.sha }}
+          path: dist/airst-qualification-bundle.json
+          retention-days: 30

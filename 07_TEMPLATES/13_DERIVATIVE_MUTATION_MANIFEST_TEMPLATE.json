@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "manifest_id": "DERIVATIVE-MANIFEST-001",
+  "parent": {
+    "template_id": "GTS-AIRST",
+    "canonical_name": "GTS AI Research System Template",
+    "release_version": "",
+    "tag": "",
+    "commit": "",
+    "repository_manifest_sha256": "",
+    "component_registry_sha256": ""
+  },
+  "derivative": {
+    "derivative_id": "",
+    "name": "",
+    "domain": "",
+    "owning_project": "",
+    "repository": "",
+    "development_state": "DRAFT"
+  },
+  "inheritance_policy": "PRESERVE_UNLESS_DECLARED",
+  "preserved_invariants": [
+    "AIRST-INV-001",
+    "AIRST-INV-002",
+    "AIRST-INV-003",
+    "AIRST-INV-004",
+    "AIRST-INV-005",
+    "AIRST-INV-006",
+    "AIRST-INV-007",
+    "AIRST-INV-008",
+    "AIRST-INV-009",
+    "AIRST-INV-010",
+    "AIRST-INV-011",
+    "AIRST-INV-012",
+    "AIRST-INV-013",
+    "AIRST-INV-014"
+  ],
+  "mutations": [],
+  "domain_extensions": [],
+  "qualification": {
+    "state": "UNQUALIFIED",
+    "bundle_ref": "",
+    "qualified_parent_commit": "",
+    "last_reviewed_at": ""
+  },
+  "upstream": {
+    "compatibility_state": "UNKNOWN",
+    "synchronization_state": "PINNED",
+    "last_parent_review_version": "",
+    "last_parent_review_commit": "",
+    "known_incompatibilities": []
+  },
+  "history": [
+    {
+      "revision": 1,
+      "change": "Initial derivative manifest",
+      "decision_ref": ""
+    }
+  ]
+}

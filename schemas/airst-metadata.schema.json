@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guildtechnologysolutions.com/schemas/airst-metadata.schema.json",
+  "title": "GTS-AIRST Metadata",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "template_id",
+    "canonical_name",
+    "repository",
+    "lineage",
+    "release_state",
+    "method_selection"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "template_id": {
+      "const": "GTS-AIRST"
+    },
+    "canonical_name": {
+      "const": "GTS AI Research System Template"
+    },
+    "repository": {
+      "const": "https://github.com/GannoK/GTS-AI-Research-System-Template"
+    },
+    "commit_identity": {
+      "const": "DERIVE_FROM_GIT"
+    },
+    "lineage": {
+      "type": "object"
+    },
+    "release_state": {
+      "type": "object"
+    },
+    "method_selection": {
+      "const": "ADOPT -> PROFILE -> EXTEND -> BUILD"
+    }
+  },
+  "additionalProperties": true
+}

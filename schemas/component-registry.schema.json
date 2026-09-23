@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guildtechnologysolutions.com/schemas/airst-component-registry.schema.json",
+  "title": "GTS-AIRST Component Registry",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "template_id",
+    "inheritance_policy",
+    "classifications",
+    "mutation_actions",
+    "components"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "template_id": {
+      "const": "GTS-AIRST"
+    },
+    "inheritance_policy": {
+      "const": "PRESERVE_UNLESS_DECLARED"
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "component_id",
+          "classification",
+          "purpose",
+          "source_paths",
+          "dependencies",
+          "covered_invariants",
+          "mutation_permissions",
+          "qualification_controls"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

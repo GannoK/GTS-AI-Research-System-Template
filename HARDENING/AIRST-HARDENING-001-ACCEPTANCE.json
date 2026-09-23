@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "hardening_id": "AIRST-HARDENING-001",
+  "control_base_commit": "b1ec68c0052a1564187e7e48691baca89add803b",
+  "controls": [
+    {
+      "id": "AC-01",
+      "domain": "RI",
+      "requirement": "Canonical GTS-AIRST identity has one machine-readable source of truth and current commit identity is derived, not manually stored.",
+      "evidence": [
+        "AIRST_METADATA.json",
+        "schemas/airst-metadata.schema.json",
+        "tools/airst_validate.py"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-02",
+      "domain": "RI",
+      "requirement": "Historical predecessor names and release artifacts remain traceable and protected from normalization.",
+      "evidence": [
+        "AIRST_METADATA.json",
+        "HISTORICAL_PATHS.json",
+        "tests/test_airst_hardening.py"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-03",
+      "domain": "DQ",
+      "requirement": "Machine-readable component registry classifies material parent components and records invariant coverage, mutation permissions, dependencies, and qualification controls.",
+      "evidence": [
+        "COMPONENT_REGISTRY.json",
+        "schemas/component-registry.schema.json"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-04",
+      "domain": "DQ",
+      "requirement": "Derivative contract defines PRESERVE_UNLESS_DECLARED plus PRESERVE/SPECIALIZE/EXTEND/REPLACE/REMOVE semantics.",
+      "evidence": [
+        "DERIVATIVE_CONTRACT.md",
+        "schemas/derivative-mutation-manifest.schema.json"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-05",
+      "domain": "DQ",
+      "requirement": "Derivative manifests pin exact parent version/tag/commit/repository manifest/component-registry identity and expose compatibility/synchronization state.",
+      "evidence": [
+        "07_TEMPLATES/13_DERIVATIVE_MUTATION_MANIFEST_TEMPLATE.json",
+        "tools/resolve_derivative.py"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-06",
+      "domain": "DQ",
+      "requirement": "Mutation legality and invariant coverage are mechanically validated.",
+      "evidence": [
+        "tools/airst_validate.py",
+        "tests/test_derivative_contract.py"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-07",
+      "domain": "RI",
+      "requirement": "Repository-integrity controls are explicitly RI-* and remain distinct from methodology/output/derivative qualification.",
+      "evidence": [
+        "ASSURANCE.json",
+        "assurance/CONTROL_DOMAINS.md"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-08",
+      "domain": "MV",
+      "requirement": "AR-001 through AR-010 are executable/hybrid fixtures with deterministic checks where possible and explicit semantic/manual review where needed.",
+      "evidence": [
+        "evals/methodology",
+        "tools/run_methodology_evals.py",
+        "tests/test_methodology_eval_harness.py"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-09",
+      "domain": "MV",
+      "requirement": "Methodology coverage includes provenance, traceability, contradiction, uncertainty, falsification, authority, freshness/retraction, source dependence, causal overreach, prompt injection, scope expansion, authority escalation, tool failure, and derivative mutation.",
+      "evidence": [
+        "evals/methodology/CONTROL_MAP.json"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-10",
+      "domain": "RI",
+      "requirement": "Security hardening uses allowlists, schema validation, immutable workflow pins, least privilege, untrusted-content boundaries, historical-path protection, secret-pattern checks, and deterministic failures where applicable.",
+      "evidence": [
+        "tools/airst_validate.py",
+        ".github/workflows/quality.yml",
+        "SECURITY.md"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-11",
+      "domain": "DQ",
+      "requirement": "Repetitive derivative work is mechanized for instantiation, resolution, compatibility, qualification bundles, invariant checks, identity consistency, and handoff generation.",
+      "evidence": [
+        "tools/instantiate_derivative.py",
+        "tools/resolve_derivative.py",
+        "tools/check_parent_compatibility.py",
+        "tools/generate_qualification_bundle.py",
+        "tools/generate_handoff.py"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-12",
+      "domain": "RI",
+      "requirement": "Future-facing current documents use GTS AI Research System Template / GTS-AIRST / GannoK/GTS-AI-Research-System-Template without rewriting historical evidence.",
+      "evidence": [
+        "README.md",
+        "OPEN_THIS_FIRST.md",
+        "GOVERNANCE.md",
+        "CITATION.cff"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-13",
+      "domain": "RI",
+      "requirement": "CI runs repository verification, schema/identity/component/derivative validation, unit tests, and methodology eval harness.",
+      "evidence": [
+        ".github/workflows/quality.yml"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-14",
+      "domain": "RO",
+      "requirement": "Research-output qualification remains separate and cannot be inferred from repository or methodology PASS.",
+      "evidence": [
+        "assurance/CONTROL_DOMAINS.md",
+        "ASSURANCE.json"
+      ],
+      "required": true
+    },
+    {
+      "id": "AC-15",
+      "domain": "RI",
+      "requirement": "Qualification bundle reports all PASS/FAIL/MANUAL/UNKNOWN/WAIVED/N/A controls plus limitations, compatibility, migration, rollback, derivative readiness, and release readiness.",
+      "evidence": [
+        "tools/generate_qualification_bundle.py"
+      ],
+      "required": true
+    }
+  ]
+}

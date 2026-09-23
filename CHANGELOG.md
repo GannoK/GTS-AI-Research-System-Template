@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — GTS-AIRST hardening
+
+- Migrated future-facing identity to GTS AI Research System Template (GTS-AIRST) while preserving historical predecessor evidence.
+- Added canonical identity/lineage metadata, invariant registry, component registry, and historical no-touch controls.
+- Added a version-pinned derivative contract, mutation schema, manifest resolution, mutation legality, invariant coverage, and compatibility tooling.
+- Separated RI, MV, RO, and DQ qualification domains.
+- Materialized AR-001 through AR-014 as executable/hybrid methodology eval fixtures.
+- Added qualification-bundle, handoff, derivative-instantiation, and compatibility automation.
+- No new release/version is declared by this section.
+
+
 ## v0.2.0 — Proprietary Baseline
 
 - Changed current distribution from the historical CC BY 4.0 public-preview model to a proprietary, all-rights-reserved model.

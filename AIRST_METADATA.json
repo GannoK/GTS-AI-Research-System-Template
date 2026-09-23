@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "template_id": "GTS-AIRST",
+  "canonical_name": "GTS AI Research System Template",
+  "repository": "https://github.com/GannoK/GTS-AI-Research-System-Template",
+  "project_type": "ai-research-system-template",
+  "license": "Proprietary-All-Rights-Reserved",
+  "creator": "Kyle Gannon (GannoK)",
+  "method_selection": "ADOPT -> PROFILE -> EXTEND -> BUILD",
+  "rigor_profiles": [
+    "EXPLORATORY",
+    "EVIDENCE-BASED",
+    "HIGH ASSURANCE"
+  ],
+  "commit_identity": "DERIVE_FROM_GIT",
+  "lineage": {
+    "predecessor_aliases": [
+      "AI-Powered Research Starter Kit",
+      "Research Starter Kit",
+      "GTS Research Starter Kit",
+      "AIRSK"
+    ],
+    "former_repository_names": [
+      "GannoK/AI-Powered-Research-Starter-kit",
+      "GannoK/AI-Powered-Research-Starter-Kit"
+    ],
+    "historical_public_boundary": {
+      "through_version": "0.1.0",
+      "license": "CC-BY-4.0",
+      "branch": "legacy/v0.1.0-cc-by-4.0",
+      "commit": "ea8013071844b59cecec25f3270d78c9c1652450"
+    }
+  },
+  "release_state": {
+    "last_declared_version": "0.2.0",
+    "last_declared_release_purpose": "PROPRIETARY_IP_BASELINE",
+    "development_state": "UNRELEASED_POST_V0_2_0_HARDENING",
+    "new_release_declared": false
+  },
+  "future_facing_identity_paths": [
+    "README.md",
+    "OPEN_THIS_FIRST.md",
+    "INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md",
+    "GOVERNANCE.md",
+    "SECURITY.md",
+    "MAINTAINERS.md",
+    "PACK_METADATA.json",
+    "CITATION.cff",
+    "ASSURANCE.json",
+    "ATTRIBUTION.md",
+    "COPYRIGHT.md",
+    "LICENSE",
+    "LEGAL/README.md"
+  ],
+  "future_facing_forbidden_identity_strings": [
+    "https://github.com/GannoK/AI-Powered-Research-Starter-kit",
+    "https://github.com/GannoK/AI-Powered-Research-Starter-Kit"
+  ]
+}

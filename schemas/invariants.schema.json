@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guildtechnologysolutions.com/schemas/airst-invariants.schema.json",
+  "title": "GTS-AIRST Invariant Registry",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "template_id",
+    "invariants"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "template_id": {
+      "const": "GTS-AIRST"
+    },
+    "invariants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "statement",
+          "operator_override"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^AIRST-INV-[0-9]{3}$"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operator_override": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

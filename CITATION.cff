@@ -1,11 +1,11 @@
 cff-version: 1.2.0
-title: "AI-Powered Research Starter Kit"
-message: "If you are authorized to use or reference this project, cite the identified version and repository."
+title: "GTS AI Research System Template"
+message: "Cite the declared release when using a release; for unreleased development state, cite the exact repository commit."
 type: software
 authors:
   - family-names: "Gannon"
     given-names: "Kyle"
 version: "0.2.0"
 date-released: "2026-09-08"
-repository-code: "https://github.com/GannoK/AI-Powered-Research-Starter-kit"
-license-url: "https://github.com/GannoK/AI-Powered-Research-Starter-kit/blob/main/LICENSE"
+repository-code: "https://github.com/GannoK/GTS-AI-Research-System-Template"
+license-url: "https://github.com/GannoK/GTS-AI-Research-System-Template/blob/main/LICENSE"

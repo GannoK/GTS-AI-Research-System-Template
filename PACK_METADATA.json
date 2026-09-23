@@ -1,8 +1,11 @@
 {
-  "name": "AI-Powered Research Starter Kit",
+  "name": "GTS AI Research System Template",
+  "template_id": "GTS-AIRST",
+  "canonical_metadata": "AIRST_METADATA.json",
   "version": "0.2.0",
-  "status": "proprietary-baseline",
-  "repository": "https://github.com/GannoK/AI-Powered-Research-Starter-kit",
+  "version_semantics": "last-declared-release-base",
+  "development_state": "UNRELEASED_POST_V0_2_0_HARDENING",
+  "repository": "https://github.com/GannoK/GTS-AI-Research-System-Template",
   "license": "Proprietary-All-Rights-Reserved",
   "creator": "Kyle Gannon (GannoK)",
   "historical_license": {
