@@ -125,6 +125,24 @@ def validate_identity() -> list[str]:
         errors.append("development state must identify unreleased post-v0.2.0 hardening")
     if meta.get("method_selection") != "ADOPT -> PROFILE -> EXTEND -> BUILD":
         errors.append("method-selection invariant changed")
+
+    pack = load_json(ROOT / "PACK_METADATA.json")
+    if pack.get("canonical_metadata") != "AIRST_METADATA.json":
+        errors.append("PACK_METADATA.json must identify AIRST_METADATA.json as canonical metadata")
+    if pack.get("name") != meta.get("canonical_name"):
+        errors.append("PACK_METADATA.json name drifted from canonical metadata")
+    if pack.get("repository") != meta.get("repository"):
+        errors.append("PACK_METADATA.json repository drifted from canonical metadata")
+    if pack.get("method_selection") != meta.get("method_selection"):
+        errors.append("PACK_METADATA.json method selection drifted from canonical metadata")
+    assurance = load_json(ROOT / "ASSURANCE.json")
+    if assurance.get("project") != meta.get("template_id"):
+        errors.append("ASSURANCE.json project drifted from canonical metadata")
+    citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
+    if 'title: "GTS AI Research System Template"' not in citation:
+        errors.append("CITATION.cff title drifted from canonical metadata")
+    if meta.get("repository") not in citation:
+        errors.append("CITATION.cff repository drifted from canonical metadata")
     return errors
 
 

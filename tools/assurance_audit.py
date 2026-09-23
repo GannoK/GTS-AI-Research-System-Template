@@ -3,11 +3,11 @@ from __future__ import annotations
 
 import json
 import re
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULT_STATES = {"PASS", "FAIL", "MANUAL", "N/A", "UNKNOWN", "WAIVED"}
+CONTROL_DOMAINS = {"RI", "MV", "RO", "DQ"}
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
 USES = re.compile(r"^\s*-?\s*uses:\s*([^@\s]+)@([^\s#]+)", re.MULTILINE)
 
@@ -44,10 +44,17 @@ def audit() -> tuple[list[str], list[str]]:
         "GOVERNANCE.md",
         "MAINTAINERS.md",
         "SECURITY.md",
+        "AIRST_METADATA.json",
+        "INVARIANTS.json",
+        "COMPONENT_REGISTRY.json",
+        "HISTORICAL_PATHS.json",
+        "DERIVATIVE_CONTRACT.md",
         "07_TEMPLATES/10_RESEARCH_PROVENANCE_TEMPLATE.json",
         "07_TEMPLATES/11_CLAIM_EVIDENCE_GRAPH_TEMPLATE.json",
         "07_TEMPLATES/12_SOURCE_RECORD_TEMPLATE.json",
-        "09_EXAMPLES/ADVERSARIAL_RESEARCH_TEST_CORPUS.md",
+        "07_TEMPLATES/13_DERIVATIVE_MUTATION_MANIFEST_TEMPLATE.json",
+        "evals/methodology/CASES.json",
+        "evals/methodology/CONTROL_MAP.json",
     ]
     for rel in required:
         if not (ROOT / rel).is_file():
@@ -63,8 +70,22 @@ def audit() -> tuple[list[str], list[str]]:
     if states != RESULT_STATES:
         failures.append(f"ASSURANCE.json result_states must equal {sorted(RESULT_STATES)}")
 
-    for rel in manifest.get("manual_controls", []):
-        manual.append(str(rel))
+    domains = set(manifest.get("control_domains", {}))
+    if domains != CONTROL_DOMAINS:
+        failures.append(f"ASSURANCE.json control_domains must equal {sorted(CONTROL_DOMAINS)}")
+
+    for control in manifest.get("required_checks", []):
+        prefix = str(control).split("-", 1)[0]
+        if prefix not in CONTROL_DOMAINS:
+            failures.append(f"required control lacks RI/MV/RO/DQ domain: {control}")
+
+    for item in manifest.get("manual_controls", []):
+        if isinstance(item, dict):
+            cid = str(item.get("control_id", "MANUAL-UNKNOWN"))
+            description = str(item.get("description", "manual review required"))
+            manual.append(f"{cid}: {description}")
+        else:
+            manual.append(str(item))
 
     workflows = ROOT / ".github" / "workflows"
     if workflows.is_dir():
