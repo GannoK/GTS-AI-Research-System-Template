@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "protected_files": [
+    {
+      "path": "RELEASE_NOTES_v0.1.0.md",
+      "sha256": "0096115527459a32a6b1d1013034cb949ddcb0cf56b19e32224b6413e75717f3",
+      "reason": "Historical v0.1.0 release evidence"
+    },
+    {
+      "path": "RELEASE_NOTES_v0.2.0.md",
+      "sha256": "10fb3db732261dd8320c202a6454018a687a5d9c1126b3dea17fb16b9d9fe27e",
+      "reason": "Historical v0.2.0 release evidence"
+    },
+    {
+      "path": "LICENSE_HISTORY.md",
+      "sha256": "6dd8d356235e3a7471e2abf6c059a8006021524752278364e44779a08f6b3f88",
+      "reason": "Historical licensing boundary evidence"
+    }
+  ],
+  "protected_refs": {
+    "legacy_v0_1_0": {
+      "branch": "legacy/v0.1.0-cc-by-4.0",
+      "commit": "ea8013071844b59cecec25f3270d78c9c1652450"
+    }
+  }
+}

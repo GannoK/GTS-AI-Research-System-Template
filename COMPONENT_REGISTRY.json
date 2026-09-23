@@ -1,0 +1,604 @@
+{
+  "schema_version": "1.0",
+  "template_id": "GTS-AIRST",
+  "inheritance_policy": "PRESERVE_UNLESS_DECLARED",
+  "classifications": [
+    "CORE_INVARIANT",
+    "GENERIC_REUSABLE_MECHANISM",
+    "DEFAULT_IMPLEMENTATION",
+    "DOMAIN_EXTENSION_POINT",
+    "EXAMPLE_ONLY",
+    "HISTORICAL_LEGACY"
+  ],
+  "mutation_actions": [
+    "PRESERVE",
+    "SPECIALIZE",
+    "EXTEND",
+    "REPLACE",
+    "REMOVE"
+  ],
+  "components": [
+    {
+      "component_id": "core-research-invariants",
+      "classification": "CORE_INVARIANT",
+      "purpose": "Semantic guarantees inherited by every conformant derivative.",
+      "source_paths": [
+        "INVARIANTS.json"
+      ],
+      "dependencies": [],
+      "covered_invariants": [
+        "AIRST-INV-001",
+        "AIRST-INV-002",
+        "AIRST-INV-003",
+        "AIRST-INV-004",
+        "AIRST-INV-005",
+        "AIRST-INV-006",
+        "AIRST-INV-007",
+        "AIRST-INV-008",
+        "AIRST-INV-009",
+        "AIRST-INV-010",
+        "AIRST-INV-011",
+        "AIRST-INV-012",
+        "AIRST-INV-013",
+        "AIRST-INV-014"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "EXTEND"
+      ],
+      "qualification_controls": [
+        "MV-INVARIANT-CONFORMANCE",
+        "DQ-INVARIANT-COVERAGE"
+      ]
+    },
+    {
+      "component_id": "method-selection",
+      "classification": "CORE_INVARIANT",
+      "purpose": "Prefer mature methods before bespoke methods via ADOPT -> PROFILE -> EXTEND -> BUILD.",
+      "source_paths": [
+        "10_REFERENCE/02_METHOD_SELECTION.md"
+      ],
+      "dependencies": [
+        "core-research-invariants"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-010"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "EXTEND"
+      ],
+      "qualification_controls": [
+        "MV-METHOD-SELECTION"
+      ]
+    },
+    {
+      "component_id": "rigor-profiles",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Scale evidence burden by consequence.",
+      "source_paths": [
+        "01_BEGINNER_GUIDE/07_CHOOSE_YOUR_RIGOR_PROFILE.md"
+      ],
+      "dependencies": [
+        "method-selection"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-006",
+        "AIRST-INV-010"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "MV-RIGOR-PROFILE"
+      ]
+    },
+    {
+      "component_id": "research-lifecycle",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Generic question-to-audit research lifecycle.",
+      "source_paths": [
+        "04_RESEARCH_WORKFLOW/01_RESEARCH_LIFECYCLE.md"
+      ],
+      "dependencies": [
+        "method-selection",
+        "rigor-profiles"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-004",
+        "AIRST-INV-007",
+        "AIRST-INV-010",
+        "AIRST-INV-011"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "MV-LIFECYCLE"
+      ]
+    },
+    {
+      "component_id": "domain-source-criteria",
+      "classification": "DOMAIN_EXTENSION_POINT",
+      "purpose": "Domain-specific authority, recency, inclusion, exclusion, and conflict criteria.",
+      "source_paths": [
+        "02_RESEARCH_KNOWLEDGE_TEMPLATE/40_SOURCE_CRITERIA.md"
+      ],
+      "dependencies": [
+        "research-lifecycle"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-003",
+        "AIRST-INV-008"
+      ],
+      "mutation_permissions": [
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "DQ-DOMAIN-SOURCE-CRITERIA"
+      ]
+    },
+    {
+      "component_id": "source-register",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Persistent source identity and status registry.",
+      "source_paths": [
+        "02_RESEARCH_KNOWLEDGE_TEMPLATE/50_SOURCE_REGISTER.md",
+        "07_TEMPLATES/12_SOURCE_RECORD_TEMPLATE.json"
+      ],
+      "dependencies": [
+        "domain-source-criteria"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-002",
+        "AIRST-INV-003",
+        "AIRST-INV-008",
+        "AIRST-INV-009"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "MV-PROVENANCE",
+        "RO-SOURCE-IDENTITY"
+      ]
+    },
+    {
+      "component_id": "evidence-ledger",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Separate extracted evidence from interpretation.",
+      "source_paths": [
+        "02_RESEARCH_KNOWLEDGE_TEMPLATE/60_EVIDENCE_LEDGER.md"
+      ],
+      "dependencies": [
+        "source-register"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-002",
+        "AIRST-INV-004",
+        "AIRST-INV-009",
+        "AIRST-INV-010"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "MV-TRACEABILITY",
+        "RO-EVIDENCE"
+      ]
+    },
+    {
+      "component_id": "claims-ledger",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Bind claims to supporting and contradicting evidence.",
+      "source_paths": [
+        "02_RESEARCH_KNOWLEDGE_TEMPLATE/70_CLAIMS_LEDGER.md"
+      ],
+      "dependencies": [
+        "evidence-ledger"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-002",
+        "AIRST-INV-005",
+        "AIRST-INV-006",
+        "AIRST-INV-010"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "MV-TRACEABILITY",
+        "RO-CLAIM-SUFFICIENCY"
+      ]
+    },
+    {
+      "component_id": "conflict-and-uncertainty",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Preserve contradiction, ambiguity, missing evidence, and uncertainty.",
+      "source_paths": [
+        "02_RESEARCH_KNOWLEDGE_TEMPLATE/80_CONFLICTS_AND_UNCERTAINTIES.md"
+      ],
+      "dependencies": [
+        "claims-ledger"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-005",
+        "AIRST-INV-006",
+        "AIRST-INV-007"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "MV-CONTRADICTION",
+        "MV-UNCERTAINTY"
+      ]
+    },
+    {
+      "component_id": "falsification-workflow",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Search for disconfirmation and alternative explanations.",
+      "source_paths": [
+        "04_RESEARCH_WORKFLOW/06_FALSIFICATION_AND_NEGATIVE_EVIDENCE.md",
+        "03_PROMPTS/06_CHALLENGE_THE_CONCLUSION.txt"
+      ],
+      "dependencies": [
+        "claims-ledger",
+        "conflict-and-uncertainty"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-005",
+        "AIRST-INV-007"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "MV-FALSIFICATION"
+      ]
+    },
+    {
+      "component_id": "interpretation-recommendation-decision-gates",
+      "classification": "CORE_INVARIANT",
+      "purpose": "Prevent inference or recommendation from silently becoming accepted decision.",
+      "source_paths": [
+        "04_RESEARCH_WORKFLOW/07_RECOMMENDATION_AND_DECISION_GATES.md",
+        "02_RESEARCH_KNOWLEDGE_TEMPLATE/90_CANDIDATE_INTERPRETATIONS.md",
+        "02_RESEARCH_KNOWLEDGE_TEMPLATE/100_RECOMMENDATIONS.md",
+        "02_RESEARCH_KNOWLEDGE_TEMPLATE/110_ACCEPTED_DECISIONS.md"
+      ],
+      "dependencies": [
+        "claims-ledger"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-004",
+        "AIRST-INV-011",
+        "AIRST-INV-012"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "EXTEND"
+      ],
+      "qualification_controls": [
+        "MV-AUTHORITY",
+        "RO-DECISION-GATE"
+      ]
+    },
+    {
+      "component_id": "current-state-and-handoff",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Manual resumability and bounded continuation.",
+      "source_paths": [
+        "02_RESEARCH_KNOWLEDGE_TEMPLATE/120_CURRENT_STATE.md",
+        "07_TEMPLATES/09_RESEARCH_HANDOFF_TEMPLATE.md"
+      ],
+      "dependencies": [
+        "research-lifecycle"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-009",
+        "AIRST-INV-013",
+        "AIRST-INV-014"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "RO-HANDOFF"
+      ]
+    },
+    {
+      "component_id": "research-provenance-json",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Machine-readable provenance for searches, sources, AI assistance, transformations, and outputs.",
+      "source_paths": [
+        "07_TEMPLATES/10_RESEARCH_PROVENANCE_TEMPLATE.json"
+      ],
+      "dependencies": [
+        "source-register"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-002",
+        "AIRST-INV-008",
+        "AIRST-INV-009",
+        "AIRST-INV-014"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "MV-PROVENANCE"
+      ]
+    },
+    {
+      "component_id": "claim-evidence-graph",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Machine-readable source/evidence/claim/recommendation/decision relationships.",
+      "source_paths": [
+        "07_TEMPLATES/11_CLAIM_EVIDENCE_GRAPH_TEMPLATE.json"
+      ],
+      "dependencies": [
+        "source-register",
+        "evidence-ledger",
+        "claims-ledger"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-002",
+        "AIRST-INV-004",
+        "AIRST-INV-005"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "MV-TRACEABILITY"
+      ]
+    },
+    {
+      "component_id": "repository-assurance",
+      "classification": "DEFAULT_IMPLEMENTATION",
+      "purpose": "Repository manifest, workflow, schema, security, and release-integrity checks.",
+      "source_paths": [
+        "ASSURANCE.json",
+        "tools/verify_repository.py",
+        "tools/assurance_audit.py",
+        ".github/workflows/quality.yml"
+      ],
+      "dependencies": [
+        "core-research-invariants"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-010",
+        "AIRST-INV-013",
+        "AIRST-INV-014"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "RI-MANIFEST",
+        "RI-WORKFLOW-PINS",
+        "RI-SCHEMAS"
+      ]
+    },
+    {
+      "component_id": "methodology-eval-harness",
+      "classification": "GENERIC_REUSABLE_MECHANISM",
+      "purpose": "Executable/hybrid regression evaluation of research-method behavior.",
+      "source_paths": [
+        "evals/methodology/CASES.json",
+        "tools/run_methodology_evals.py"
+      ],
+      "dependencies": [
+        "core-research-invariants"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-001",
+        "AIRST-INV-002",
+        "AIRST-INV-003",
+        "AIRST-INV-004",
+        "AIRST-INV-005",
+        "AIRST-INV-006",
+        "AIRST-INV-007",
+        "AIRST-INV-008",
+        "AIRST-INV-010",
+        "AIRST-INV-011"
+      ],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "MV-EVAL-HARNESS"
+      ]
+    },
+    {
+      "component_id": "markdown-knowledge-layout",
+      "classification": "DEFAULT_IMPLEMENTATION",
+      "purpose": "Human-readable numbered file layout.",
+      "source_paths": [
+        "02_RESEARCH_KNOWLEDGE_TEMPLATE"
+      ],
+      "dependencies": [
+        "research-lifecycle"
+      ],
+      "covered_invariants": [],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE",
+        "REMOVE"
+      ],
+      "qualification_controls": [
+        "DQ-REPRESENTATION"
+      ]
+    },
+    {
+      "component_id": "python-validation-tools",
+      "classification": "DEFAULT_IMPLEMENTATION",
+      "purpose": "Reference implementation of validators, generators, and qualification tools.",
+      "source_paths": [
+        "tools"
+      ],
+      "dependencies": [
+        "repository-assurance"
+      ],
+      "covered_invariants": [],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE",
+        "REMOVE"
+      ],
+      "qualification_controls": [
+        "RI-TOOLS"
+      ]
+    },
+    {
+      "component_id": "github-actions-ci",
+      "classification": "DEFAULT_IMPLEMENTATION",
+      "purpose": "Reference CI executor using least privilege and immutable action pins.",
+      "source_paths": [
+        ".github/workflows"
+      ],
+      "dependencies": [
+        "repository-assurance"
+      ],
+      "covered_invariants": [],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE",
+        "REMOVE"
+      ],
+      "qualification_controls": [
+        "RI-WORKFLOW-PINS"
+      ]
+    },
+    {
+      "component_id": "domain-authority-profile",
+      "classification": "DOMAIN_EXTENSION_POINT",
+      "purpose": "Domain-specific standards, authorities, reporting protocols, and evidence burdens.",
+      "source_paths": [],
+      "dependencies": [
+        "domain-source-criteria",
+        "rigor-profiles"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-003",
+        "AIRST-INV-006",
+        "AIRST-INV-010"
+      ],
+      "mutation_permissions": [
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "DQ-DOMAIN-AUTHORITY"
+      ]
+    },
+    {
+      "component_id": "tool-routing-profile",
+      "classification": "DOMAIN_EXTENSION_POINT",
+      "purpose": "Domain-specific source/tool/plugin allowlists and capability boundaries.",
+      "source_paths": [],
+      "dependencies": [
+        "domain-authority-profile"
+      ],
+      "covered_invariants": [
+        "AIRST-INV-003",
+        "AIRST-INV-011"
+      ],
+      "mutation_permissions": [
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE"
+      ],
+      "qualification_controls": [
+        "DQ-TOOL-ROUTING"
+      ]
+    },
+    {
+      "component_id": "adversarial-examples",
+      "classification": "EXAMPLE_ONLY",
+      "purpose": "Illustrative adversarial research cases and explanatory examples.",
+      "source_paths": [
+        "09_EXAMPLES"
+      ],
+      "dependencies": [
+        "methodology-eval-harness"
+      ],
+      "covered_invariants": [],
+      "mutation_permissions": [
+        "PRESERVE",
+        "SPECIALIZE",
+        "EXTEND",
+        "REPLACE",
+        "REMOVE"
+      ],
+      "qualification_controls": [
+        "MV-EVAL-HARNESS"
+      ]
+    },
+    {
+      "component_id": "historical-v0-1-release",
+      "classification": "HISTORICAL_LEGACY",
+      "purpose": "Preserve provenance and licensing boundary of the historical public preview.",
+      "source_paths": [
+        "RELEASE_NOTES_v0.1.0.md",
+        "LICENSE_HISTORY.md"
+      ],
+      "dependencies": [],
+      "covered_invariants": [
+        "AIRST-INV-013"
+      ],
+      "mutation_permissions": [
+        "PRESERVE"
+      ],
+      "qualification_controls": [
+        "RI-HISTORICAL-NO-TOUCH"
+      ]
+    }
+  ]
+}

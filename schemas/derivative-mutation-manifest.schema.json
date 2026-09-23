@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guildtechnologysolutions.com/schemas/airst-derivative-mutation-manifest.schema.json",
+  "title": "GTS-AIRST Derivative Mutation Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "manifest_id",
+    "parent",
+    "derivative",
+    "inheritance_policy",
+    "preserved_invariants",
+    "mutations",
+    "domain_extensions",
+    "qualification",
+    "upstream",
+    "history"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "manifest_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parent": {
+      "type": "object",
+      "required": [
+        "template_id",
+        "canonical_name",
+        "release_version",
+        "tag",
+        "commit",
+        "repository_manifest_sha256",
+        "component_registry_sha256"
+      ],
+      "properties": {
+        "template_id": {
+          "const": "GTS-AIRST"
+        },
+        "canonical_name": {
+          "const": "GTS AI Research System Template"
+        },
+        "release_version": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        },
+        "repository_manifest_sha256": {
+          "type": "string"
+        },
+        "component_registry_sha256": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "derivative": {
+      "type": "object",
+      "required": [
+        "derivative_id",
+        "name",
+        "domain",
+        "owning_project",
+        "repository",
+        "development_state"
+      ]
+    },
+    "inheritance_policy": {
+      "const": "PRESERVE_UNLESS_DECLARED"
+    },
+    "preserved_invariants": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mutations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "component_id",
+          "mutation",
+          "rationale",
+          "covered_invariants",
+          "invariant_impact",
+          "coverage_evidence",
+          "qualification_controls",
+          "decision_refs"
+        ]
+      }
+    },
+    "domain_extensions": {
+      "type": "array"
+    },
+    "qualification": {
+      "type": "object",
+      "required": [
+        "state",
+        "bundle_ref",
+        "qualified_parent_commit",
+        "last_reviewed_at"
+      ]
+    },
+    "upstream": {
+      "type": "object",
+      "required": [
+        "compatibility_state",
+        "synchronization_state",
+        "last_parent_review_version",
+        "last_parent_review_commit",
+        "known_incompatibilities"
+      ]
+    },
+    "history": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}
