@@ -46,7 +46,11 @@
     "MAINTAINERS.md",
     "PACK_METADATA.json",
     "CITATION.cff",
-    "ASSURANCE.json"
+    "ASSURANCE.json",
+    "ATTRIBUTION.md",
+    "COPYRIGHT.md",
+    "LICENSE",
+    "LEGAL/README.md"
   ],
   "future_facing_forbidden_identity_strings": [
     "https://github.com/GannoK/AI-Powered-Research-Starter-kit",
