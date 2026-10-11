@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.2.1 — Beginner Documentation and Onboarding
+
+- Added plain-language explanations of LLMs, AI assistants, agents, prompts, tools, workflows, context, hallucinations, and RAG.
+- Expanded the glossary while retaining the existing research definitions.
+- Added a complete fictional research example showing how to use the existing source, evidence, claim, uncertainty, recommendation, decision, and handoff records.
+- Clarified setup, the first-project workflow, and the distinction between the reference kit and a working research project.
+- Clarified that historical v0.1.0 release archives do not contain the current version.
+- Aligned the README, package metadata, and citation metadata with the GTS AI Research System Template name and repository.
+- Updated the repository verifier's expected package version and regenerated the integrity manifest.
+- Preserved the research workflow, template fields, rigor profiles, decision boundaries, and v0.2.0 proprietary licensing baseline.
+
 ## v0.2.0 — Proprietary Baseline
 
 - Changed current distribution from the historical CC BY 4.0 public-preview model to a proprietary, all-rights-reserved model.

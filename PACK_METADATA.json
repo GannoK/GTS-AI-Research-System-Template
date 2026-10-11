@@ -1,8 +1,8 @@
 {
-  "name": "AI-Powered Research Starter Kit",
-  "version": "0.2.0",
+  "name": "GTS AI Research System Template",
+  "version": "0.2.1",
   "status": "proprietary-baseline",
-  "repository": "https://github.com/GannoK/AI-Powered-Research-Starter-kit",
+  "repository": "https://github.com/GannoK/GTS-AI-Research-System-Template",
   "license": "Proprietary-All-Rights-Reserved",
   "creator": "Kyle Gannon (GannoK)",
   "historical_license": {

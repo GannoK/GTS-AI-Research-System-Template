@@ -49,8 +49,8 @@ for rel in REQUIRED:
 meta = json.loads((ROOT / "PACK_METADATA.json").read_text(encoding="utf-8"))
 if meta.get("license") != "Proprietary-All-Rights-Reserved":
     fail("PACK_METADATA.json license must be Proprietary-All-Rights-Reserved")
-if meta.get("version") != "0.2.0":
-    fail("PACK_METADATA.json version must be 0.2.0")
+if meta.get("version") != "0.2.1":
+    fail("PACK_METADATA.json version must be 0.2.1")
 if meta.get("method_selection") != "ADOPT -> PROFILE -> EXTEND -> BUILD":
     fail("method-selection invariant changed")
 
