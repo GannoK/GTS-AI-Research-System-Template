@@ -33,6 +33,11 @@ REQUIRED = [
     "schemas/invariants.schema.json",
     "schemas/component-registry.schema.json",
     "schemas/derivative-mutation-manifest.schema.json",
+    "schemas/assurance.schema.json",
+    "schemas/methodology-evals.schema.json",
+    "schemas/methodology-result.schema.json",
+    "schemas/qualification-bundle.schema.json",
+    "requirements-dev.txt",
     "LEGAL/IP_OWNERSHIP_POLICY.md",
     "LEGAL/CONTRIBUTOR_POLICY.md",
     "LEGAL/AI_ASSISTED_AUTHORSHIP_POLICY.md",
@@ -48,6 +53,8 @@ REQUIRED = [
     "evals/methodology/CASES.json",
     "evals/methodology/CONTROL_MAP.json",
     "tools/airst_validate.py",
+    "tools/schema_validation.py",
+    "tools/parent_snapshot.py",
     "tools/run_methodology_evals.py",
     "tools/resolve_derivative.py",
     "tools/instantiate_derivative.py",
@@ -56,6 +63,7 @@ REQUIRED = [
     "tools/generate_handoff.py",
     "HARDENING/AIRST-HARDENING-001-PLAN.md",
     "HARDENING/AIRST-HARDENING-001-ACCEPTANCE.json",
+    "HARDENING/PR-9-RECONCILIATION-2026-10-11.md",
 ]
 
 

@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 title: "GTS AI Research System Template"
-message: "Cite the declared release when using a release; for unreleased development state, cite the exact repository commit."
+message: "If authorized to use or reference this project, cite the declared release used; for unreleased development state, cite the exact repository commit. The version and release date below identify the last declared release."
 type: software
 authors:
   - family-names: "Gannon"
     given-names: "Kyle"
-version: "0.2.0"
-date-released: "2026-09-08"
+version: "0.2.1"
+date-released: "2026-10-10"
 repository-code: "https://github.com/GannoK/GTS-AI-Research-System-Template"
 license-url: "https://github.com/GannoK/GTS-AI-Research-System-Template/blob/main/LICENSE"

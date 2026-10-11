@@ -12,6 +12,11 @@
       "reason": "Historical v0.2.0 release evidence"
     },
     {
+      "path": "RELEASE_NOTES_v0.2.1.md",
+      "sha256": "c6d899030cd2882601d2ac4623979767c9ca549691981b5a5a9044ca13cd1ab9",
+      "reason": "Historical v0.2.1 beginner documentation and onboarding release evidence"
+    },
+    {
       "path": "LICENSE_HISTORY.md",
       "sha256": "6dd8d356235e3a7471e2abf6c059a8006021524752278364e44779a08f6b3f88",
       "reason": "Historical licensing boundary evidence"

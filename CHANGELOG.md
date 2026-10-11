@@ -1,15 +1,25 @@
 # Changelog
 
-## Unreleased — GTS-AIRST hardening
+## Unreleased — planned v0.3.0 GTS-AIRST hardening
 
-- Migrated future-facing identity to GTS AI Research System Template (GTS-AIRST) while preserving historical predecessor evidence.
-- Added canonical identity/lineage metadata, invariant registry, component registry, and historical no-touch controls.
-- Added a version-pinned derivative contract, mutation schema, manifest resolution, mutation legality, invariant coverage, and compatibility tooling.
-- Separated RI, MV, RO, and DQ qualification domains.
-- Materialized AR-001 through AR-014 as executable/hybrid methodology eval fixtures.
-- Added qualification-bundle, handoff, derivative-instantiation, and compatibility automation.
-- No new release/version is declared by this section.
+- Added canonical identity and lineage metadata, invariant and component registries, and historical-file protection.
+- Added parent/derivative contracts, mutation manifests, compatibility tooling, and explicit qualification controls for domain adaptations.
+- Separated repository integrity, methodology validation, research-output qualification, and derivative qualification.
+- Added methodology evaluation fixtures, qualification-candidate bundles, and handoff helpers. Fixture checks and human review remain distinct.
+- Reconciled PR #9 with v0.2.1, preserving the approved beginner README, setup path, glossary, worked example, release notes, and historical licensing records.
+- Added maintainer dependency setup and a separate path for derivative creators. Qualified derivatives require a released, exactly pinned parent; unspecified domain placeholders remain unresolved draft work.
+- v0.2.1 remains the last declared release. v0.3.0 is a planned next version, not a declared or published release. See the [repair and integration record](HARDENING/PR-9-RECONCILIATION-2026-10-11.md).
 
+## v0.2.1 — Beginner Documentation and Onboarding
+
+- Added plain-language explanations of LLMs, AI assistants, agents, prompts, tools, workflows, context, hallucinations, and RAG.
+- Expanded the glossary while retaining the existing research definitions.
+- Added a complete fictional research example showing how to use the existing source, evidence, claim, uncertainty, recommendation, decision, and handoff records.
+- Clarified setup, the first-project workflow, and the distinction between the reference kit and a working research project.
+- Clarified that historical v0.1.0 release archives do not contain the current version.
+- Aligned the README, package metadata, and citation metadata with the GTS AI Research System Template name and repository.
+- Updated the repository verifier's expected package version and regenerated the integrity manifest.
+- Preserved the research workflow, template fields, rigor profiles, decision boundaries, and v0.2.0 proprietary licensing baseline.
 
 ## v0.2.0 — Proprietary Baseline
 

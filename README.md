@@ -1,72 +1,111 @@
 # GTS AI Research System Template
 
-A reusable parent template for rigorous, evidence-driven, AI-assisted research systems.
+A file-based framework for asking clear research questions, checking sources, and recording what the evidence supports.
 
-GTS-AIRST defines reusable research invariants, state/provenance structures, qualification controls, derivative contracts, and reference implementations without treating model output, search results, or citations as proof.
+Previously titled **AI-Powered Research Starter Kit**.
 
-> **Identity and release state:** The current canonical identity is **GTS AI Research System Template (GTS-AIRST)** at `GannoK/GTS-AI-Research-System-Template`. The last declared release remains **v0.2.0 — Proprietary Baseline**; current `main` contains unreleased post-v0.2.0 hardening. Historical v0.1.0 CC BY 4.0 grants remain traceable and are not rewritten. See `AIRST_METADATA.json`, `LICENSE`, and `LICENSE_HISTORY.md`.
+Use it to organize research with an AI assistant or to follow the same process yourself. You bring the question and the source material. The kit provides guides, reusable instructions, templates, and review checklists.
 
-## I want you to break this
+> **Licensing notice:** Current v0.2.0+ distributions are proprietary and all rights are reserved. Earlier v0.1.0 distributions were released under CC BY 4.0 and those historical grants are not revoked. See [LICENSE](LICENSE) and [LICENSE_HISTORY.md](LICENSE_HISTORY.md).
 
-This project improves when people challenge it. If you work in research, engineering, scientific methods, evidence synthesis, statistics, decision analysis, safety, security, academia, or another evidence-heavy field, I would especially value critical review.
+**Start here:** [Setup](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md) · [Quick start](00_QUICK_START/QUICK_START_ONE_PAGE.md) · [Worked example](09_EXAMPLES/01_FIRST_RESEARCH_PROJECT.md) · [Glossary](10_REFERENCE/01_GLOSSARY.md)
 
-Please look for things such as:
+## What this gives you
 
-- Where is the methodology wrong, incomplete, or internally inconsistent?
-- What established research method, standard, or evidentiary practice is misrepresented or missing?
-- Where could the workflow encourage confirmation bias, weak evidence, or false confidence?
-- What works for general technical research but breaks down in a specific academic, scientific, regulated, or high-assurance discipline?
-- What part sounds rigorous without actually improving the reliability of the conclusion?
+The kit helps you keep a research question, its evidence, and the resulting decisions organized.
 
-Concrete criticism is more useful than praise. If possible, identify the failure mode, point to authoritative evidence or established methodology, and suggest a reproducible way to test or improve the framework. Feedback should challenge the method, not merely agree with its conclusions. Issues are welcome under the repository's contribution and licensing rules.
+It includes:
 
-## The problem
+- **Beginner guides** that explain research methods and common mistakes.
+- **Project templates** for questions, sources, evidence, claims, uncertainty, and decisions.
+- **Prompts** you can give an AI assistant at each stage.
+- **Checklists** for checking sources, claims, and the final result.
+- **A worked example** showing how the records fit together.
 
-AI can make research dramatically faster. It can search, summarize, compare, organize, brainstorm, and synthesize.
+The core method uses ordinary text files. You can follow it without writing code. Search, document access, file editing, and automated actions depend on the application and tools you choose to use.
 
-It can also confidently cite material that does not support a claim, repeat secondary sources without checking originals, turn correlation into causation, ignore contradictory evidence, collapse uncertainty into certainty, or convert a plausible interpretation into an accepted fact.
+A useful result is a research record that another person can inspect: what you asked, what you found, what the evidence supports, what remains uncertain, and what you recommend.
 
-The problem is not that AI cannot help with research. The problem is that **research needs a method for deciding what the evidence actually supports**.
+## New to AI?
 
-## Revelation is not verification
+**Artificial intelligence (AI)** is a broad term for computer systems that perform tasks such as recognizing patterns, generating language, or choosing actions. These are the terms you will encounter in this kit:
 
-Telling an LLM, **“Research this and tell me the truth,”** without checking its sources is like starting a religion because one guy woke up from a dream and said:
+| Term | What it means here |
+|---|---|
+| **LLM — large language model** | An AI model trained on large amounts of data to process and generate language. It can help answer questions, summarize documents, compare ideas, and write text or code. Its responses use patterns learned during training and information supplied for the current task. |
+| **AI assistant** | The application or system you work with. It uses one or more models and may provide a chat interface, files, search, saved information, or other tools. |
+| **AI agent** | A system that uses an AI model to choose and carry out steps toward a goal. A research agent might search, read the results, notice a disagreement, and choose another search to investigate it. |
+| **Prompt** | The question, instructions, and relevant material you give an AI system for a task. |
+| **Tool** | A capability for performing an operation, such as searching, reading a file, or calculating a result. |
+| **Workflow** | The organized process used to complete the work. It can include fixed steps, AI assistance, and human review. |
+| **Context** | The information available to the model for a particular response, including instructions, conversation text, and source material supplied to it. |
+| **Hallucination** | Incorrect or invented information presented as though it were reliable, such as a quotation that does not appear in the cited document. |
+| **RAG — retrieval-augmented generation** | A method that retrieves relevant information and supplies it to a model to help it produce an answer. Retrieved material still needs to be checked. |
 
-> **“God told me.”**
+The model and the application around it are different parts of the system. Available tools depend on the application. Access to a tool also does not establish permission to use it for every action.
 
-No scripture. No witnesses. No corroboration.
+An agent may choose its next steps within a workflow; a predefined workflow specifies its steps in advance. The word *agent* is used differently across the industry, so this guide uses the practical definition above.
 
-Just confidence.
+For more detail, see the [glossary](10_REFERENCE/01_GLOSSARY.md). Introductory references: [Google on language models](https://developers.google.com/machine-learning/crash-course/llm), [Anthropic on agents and workflows](https://www.anthropic.com/engineering/building-effective-agents), and [Google on RAG](https://cloud.google.com/use-cases/retrieval-augmented-generation).
 
-The problem is not that the revelation was not delivered confidently enough. The problem is that a defensible conclusion requires evidence, provenance, corroboration, competing explanations, and a serious attempt to determine whether you might be wrong.
+## Your first research project
 
-AI can help enormously with that process.
+Start with one question you can state clearly.
 
-**But it cannot replace the process.**
+The [worked example](09_EXAMPLES/01_FIRST_RESEARCH_PROJECT.md) asks:
 
-A second way to think about it:
+**Can a proposed network switch power eight cameras at their stated simultaneous maximum demand?**
 
-> Asking an LLM to **“research this and tell me the truth”** without a research methodology is like asking a detective to solve a murder by interviewing one witness and then writing the closing argument.
+Using fictional specifications, it follows the question through source checks, evidence records, a calculation, competing explanations, and a recommendation. It also shows an unsuitable source, missing evidence, and a decision that has not yet been accepted.
 
-**One witness is not an investigation. One citation is not a conclusion.**
+To follow the method:
 
-And asking AI to **“find sources proving I’m right”** is not research methodology.
+1. Complete the [setup](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md) for your authorized copy.
+2. Open the [quick start](00_QUICK_START/QUICK_START_ONE_PAGE.md).
+3. Work through the example alongside your first project.
+4. Use the [final audit](08_CHECKLISTS/04_FINAL_RESEARCH_AUDIT.md) to check the result.
 
-**It is building a prosecution.**
+You should finish with a clear question, a source register, evidence and claim records, visible uncertainty, and a supported recommendation. **“The available evidence does not settle this question” can also be a useful result.**
 
-Three rules worth remembering:
+## How the research process works
 
-- **Revelation is not verification.**
-- **One citation is not a conclusion.**
-- **Research the question—not your preferred answer.**
+Define the question, scope, method, and source requirements before broad searching. Then keep the following parts separate:
 
-A useful operating principle for AI-assisted research is:
+| Part | Purpose |
+|---|---|
+| **Source** | Identifies where the material came from, including its date or version. |
+| **Evidence** | Records the relevant finding and its location and conditions. |
+| **Claim** | States what you think the evidence supports. |
+| **Argument** | Explains how the evidence supports or challenges that claim. |
+| **Candidate interpretation** | Offers a possible explanation while preserving alternatives and assumptions. |
+| **Recommendation** | Proposes an action using the evidence, goals, constraints, costs, and risks. |
+| **Accepted decision** | Records a choice explicitly made by the responsible person or authority. |
 
-> **AI output is a lead until evidence supports the relevant conclusion.**
+A conclusion should be traceable through its claims and arguments to evidence, sources, and the source versions or snapshots used. Record contradictory evidence against the relevant claim.
+
+Research can support a decision. It does not silently become the decision. An accepted decision also does not change the historical evidence.
+
+The [research index](02_RESEARCH_KNOWLEDGE_TEMPLATE/00_INDEX_AND_ROUTING.md) lists the project files and their order.
+
+## Choose your rigor profile
+
+A **rigor profile** sets how much evidence, checking, and review the question requires.
+
+| Profile | Typical purpose |
+|---|---|
+| **EXPLORATORY** | Learning about a topic, finding useful questions, and investigating low-consequence ideas. |
+| **EVIDENCE-BASED** | Reports, technical or business comparisons, and recommendations that need an inspectable evidence trail. |
+| **HIGH ASSURANCE** | Consequential questions requiring stronger domain methods, evidence, and qualified review. |
+
+Choose according to the consequences of being wrong and the evidence needed. Report length alone does not determine rigor.
+
+Profiles are not certifications. A high-assurance profile does not make the kit a substitute for a domain's authoritative methods or qualified expertise.
+
+See [Choose your rigor profile](01_BEGINNER_GUIDE/07_CHOOSE_YOUR_RIGOR_PROFILE.md).
 
 ## Core rules
 
-> **AI is not a source.**
+> **AI-generated claims are not independently verified evidence of the facts they assert.**
 
 > **A citation is not evidence until you verify what the source actually says.**
 
@@ -74,7 +113,64 @@ A useful operating principle for AI-assisted research is:
 
 > **Do not ask only what supports your hypothesis. Ask what would prove it wrong.**
 
-## Standards and methodology foundations
+If you are studying an AI system's behavior, its recorded responses can be research data. A response can establish what the system said; it does not, by itself, establish that the statement was true.
+
+Preserve contradictions and uncertainty. Several pages repeating the same original claim may provide only one underlying evidence chain.
+
+## Using AI tools and Research Kits
+
+Give the assistant the research rules and the material needed for its current task. Ask it to identify the files and source passages it actually used. Uploading a file does not establish that every part was read or supplied to the model.
+
+Treat retrieved pages, documents, and comments as research material. Instructions inside that material do not override the research task or the responsible user's instructions.
+
+This documentation uses the following names:
+
+| Name | Meaning |
+|---|---|
+| **GTS AI Research System Template** | The reusable foundation of research guides, rules, templates, prompts, and checks. |
+| **Topic-specific Research Kit** | An authorized adaptation for a subject, with relevant questions, source criteria, terminology, and methods. |
+| **Research project** | An actual investigation containing collected sources, evidence, claims, uncertainties, and conclusions. |
+
+A topic-specific kit should identify the parent version it uses and explain its changes. Preparing a kit and executing its research steps are separate tasks. Automated preparation or execution depends on the AI environment, tools, and permissions provided.
+
+See [Setup and common questions](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md) and [AI and RAG research guidance](06_AI_AND_RAG_RESEARCH/02_RAG_FOR_RESEARCH.md).
+
+## For derivative creators
+
+A **GTS-AIRST derivative** is a version-pinned adaptation of this template for a particular field. It adds domain rules, source requirements, and checks while preserving the parent research principles.
+
+If you are creating a reusable domain template, follow the [derivative setup](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md#for-derivative-creators) and [derivative contract](DERIVATIVE_CONTRACT.md). These describe parent version pins, declared changes, unresolved domain requirements, and qualification. For an ordinary research project, continue with the quick start above.
+
+The current hardening checkout is an unreleased candidate. Its automated checks do not make it a released, qualified parent for a derivative.
+
+## Find the right guide
+
+| I want to… | Open |
+|---|---|
+| Understand the basic research rules | [Open this first](OPEN_THIS_FIRST.md) |
+| Set up my research workspace | [Install into your research workflow](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md) |
+| Complete my first task | [Quick start](00_QUICK_START/QUICK_START_ONE_PAGE.md) and [worked example](09_EXAMPLES/01_FIRST_RESEARCH_PROJECT.md) |
+| Understand an unfamiliar term | [Glossary](10_REFERENCE/01_GLOSSARY.md) |
+| Learn how AI can mislead research | [How AI can fool you](01_BEGINNER_GUIDE/02_HOW_AI_CAN_FOOL_YOU.md) |
+| Decide which sources to use | [Source basics](01_BEGINNER_GUIDE/03_SOURCE_BASICS.md) |
+| Work through conflicting sources | [When sources disagree](01_BEGINNER_GUIDE/05_WHEN_SOURCES_DISAGREE.md) |
+| Give an assistant the standing research rules | [Global research rules](03_PROMPTS/00_GLOBAL_RESEARCH_RULES.txt) |
+| Check the final result | [Final research audit](08_CHECKLISTS/04_FINAL_RESEARCH_AUDIT.md) |
+| Hand work to another person or assistant | [Research handoff template](07_TEMPLATES/09_RESEARCH_HANDOFF_TEMPLATE.md) |
+
+## Method selection and foundations
+
+Before inventing a new methodology, framework, scoring system, or experiment, use:
+
+**ADOPT → PROFILE → EXTEND → BUILD**
+
+1. **ADOPT** a mature research method or standard when it already fits.
+2. **PROFILE** it to the actual research question and risk.
+3. **EXTEND** only where a material requirement is not covered.
+4. **BUILD** a bespoke method only when there is evidence that mature approaches cannot satisfy a necessary property.
+
+<details>
+<summary><strong>Read the methodology foundations and their limits</strong></summary>
 
 This kit is not based on a single invented "AI research method." It is a beginner-usable synthesis of established practices from research methodology, systems engineering, architecture, decision analysis, assurance, software engineering, and scientific reasoning.
 
@@ -110,89 +206,84 @@ That foundation is why this kit emphasizes provenance, source hierarchy, claim/e
 
 This is intentionally a **general research framework**, not a claim of complete methodology coverage for every academic or regulated discipline. Deeper domain-specific standards reconciliation remains planned before a 1.0 release, particularly for high-assurance research.
 
-## The research chain
+</details>
 
-Important conclusions should be traceable backward:
+## Why verification matters
 
-```text
-CONCLUSION
-    ↓
-CLAIM
-    ↓
-ARGUMENT
-    ↓
-EVIDENCE
-    ↓
-SOURCE
-    ↓
-SOURCE VERSION / DATE / SNAPSHOT
-```
+AI can make research dramatically faster. It can search, summarize, compare, organize, brainstorm, and synthesize.
 
-Contradictory evidence belongs on the same claim record.
+It can also confidently cite material that does not support a claim, repeat secondary sources without checking originals, turn correlation into causation, ignore contradictory evidence, collapse uncertainty into certainty, or convert a plausible interpretation into an accepted fact.
 
-## Evidence is not authority
+The problem is not that AI cannot help with research. The problem is that **research needs a method for deciding what the evidence actually supports**.
 
-This kit deliberately separates:
+<details>
+<summary><strong>Read: Revelation is not verification</strong></summary>
 
-```text
-Research evidence
-    ↓
-Candidate interpretation
-    ↓
-Recommendation
-    ↓
-Accepted decision
-```
+Telling an LLM, **“Research this and tell me the truth,”** without checking its sources is like starting a religion because one guy woke up from a dream and said:
 
-Research can support a decision. It does not silently become the decision.
+> **“God told me.”**
 
-## Method selection
+No scripture. No witnesses. No corroboration.
 
-Before inventing a new methodology, framework, scoring system, or experiment, use:
+Just confidence.
 
-**ADOPT → PROFILE → EXTEND → BUILD**
+The problem is not that the revelation was not delivered confidently enough. The problem is that a defensible conclusion requires evidence, provenance, corroboration, competing explanations, and a serious attempt to determine whether you might be wrong.
 
-1. **ADOPT** a mature research method or standard when it already fits.
-2. **PROFILE** it to the actual research question and risk.
-3. **EXTEND** only where a material requirement is not covered.
-4. **BUILD** a bespoke method only when there is evidence that mature approaches cannot satisfy a necessary property.
+AI can help enormously with that process.
 
-## Research rigor profiles
+**But it cannot replace the process.**
 
-- **EXPLORATORY** — learning, orientation, brainstorming, and low-consequence investigation.
-- **EVIDENCE-BASED** — reports, technical/business decisions, serious synthesis, and claims that need traceability.
-- **HIGH ASSURANCE** — consequential domains such as medicine, law, public policy, safety, regulated work, formal scientific review, or other decisions where being wrong could cause major harm.
+A second way to think about it:
 
-Profiles change the evidence burden. They are not certificates.
+> Asking an LLM to **“research this and tell me the truth”** without a research methodology is like asking a detective to solve a murder by interviewing one witness and then writing the closing argument.
 
-## Download and use it
+**One witness is not an investigation. One citation is not a conclusion.**
 
-Current distributions are controlled by the proprietary license in `LICENSE`. Do not copy, redistribute, adapt, or commercialize the current version unless you have written authorization.
+And asking AI to **“find sources proving I’m right”** is not research methodology.
 
-Authorized users should follow [`INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md`](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md).
+**It is building a prosecution.**
 
-## Current release and development state
+Three rules worth remembering:
 
-**Last declared release: v0.2.0 — Proprietary Baseline**
+- **Revelation is not verification.**
+- **One citation is not a conclusion.**
+- **Research the question—not your preferred answer.**
 
-Current development state: **unreleased post-v0.2.0 hardening**. A new release/version has not been declared.
+A useful operating principle for AI-assisted research is:
 
-v0.2.0 preserved the research methodology while changing the active distribution model from the historical CC BY 4.0 public preview to a proprietary, all-rights-reserved baseline. Current hardening adds parent/derivative contracts, machine-readable invariants/components, qualification-domain separation, and executable/hybrid methodology eval infrastructure without changing the historical v0.2.0 meaning.
+> **AI output is a lead until evidence supports the relevant conclusion.**
+
+</details>
+
+## Current baseline and downloads
+
+**v0.2.1 — Beginner Documentation and Onboarding**
+
+This version adds plain-language AI explanations, clearer getting-started guidance, and a complete worked research example. The research workflow, template fields, rigor profiles, and decision boundaries remain unchanged. See the [v0.2.1 release notes](RELEASE_NOTES_v0.2.1.md) and [changelog](CHANGELOG.md).
+
+**Development state:** v0.2.1 remains the last declared release. This checkout adds **unreleased post-v0.2.1 hardening**, with **v0.3.0 planned next**. No v0.3.0 release has been declared or published. For unreleased work, record the exact commit as well as the release base. See [canonical metadata](AIRST_METADATA.json), [hardening and integration changes](CHANGELOG.md), and the [PR #9 reconciliation record](HARDENING/PR-9-RECONCILIATION-2026-10-11.md).
+
+The proprietary licensing baseline established in v0.2.0 continues to apply. See [LICENSE_HISTORY.md](LICENSE_HISTORY.md).
+
+The [v0.1.0 GitHub Release](https://github.com/GannoK/GTS-AI-Research-System-Template/releases/tag/v0.1.0) contains historical public-preview archives. Those archives do not contain the current v0.2.1 version.
+
+Authorized users should follow [INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md) and use the repository revision or package covered by their authorization.
 
 A deeper standards-reconciliation pass remains planned before a 1.0 release, particularly for domain-specific formal research and high-assurance use.
 
-## Quick start
+## I want you to break this
 
-1. Read `OPEN_THIS_FIRST.md`.
-2. Choose a rigor profile.
-3. Define the question before searching.
-4. Register sources before treating them as evidence.
-5. Extract evidence separately from interpretation.
-6. Build claims from evidence.
-7. Search for contradiction and falsification.
-8. Record uncertainty.
-9. Keep recommendation separate from accepted decision.
-10. Audit the final report.
+This project improves when people challenge it. If you work in research, engineering, scientific methods, evidence synthesis, statistics, decision analysis, safety, security, academia, or another evidence-heavy field, I would especially value critical review.
+
+Please look for things such as:
+
+- Where is the methodology wrong, incomplete, or internally inconsistent?
+- What established research method, standard, or evidentiary practice is misrepresented or missing?
+- Where could the workflow encourage confirmation bias, weak evidence, or false confidence?
+- What works for general technical research but breaks down in a specific academic, scientific, regulated, or high-assurance discipline?
+- What part sounds rigorous without actually improving the reliability of the conclusion?
+
+Concrete criticism is more useful than praise. If possible, identify the failure mode, point to authoritative evidence or established methodology, and suggest a reproducible way to test or improve the framework. Feedback should challenge the method, not merely agree with its conclusions. Issues are welcome under the repository's contribution and licensing rules.
 
 ## License
 

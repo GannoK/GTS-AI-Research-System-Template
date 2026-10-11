@@ -10,7 +10,11 @@
     "repository",
     "lineage",
     "release_state",
-    "method_selection"
+    "method_selection",
+    "commit_identity",
+    "license",
+    "future_facing_identity_paths",
+    "future_facing_forbidden_identity_strings"
   ],
   "properties": {
     "schema_version": {
@@ -29,13 +33,140 @@
       "const": "DERIVE_FROM_GIT"
     },
     "lineage": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "predecessor_aliases",
+        "former_repository_names",
+        "historical_public_boundary"
+      ],
+      "properties": {
+        "predecessor_aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "former_repository_names": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "historical_public_boundary": {
+          "type": "object",
+          "required": [
+            "through_version",
+            "license",
+            "branch",
+            "commit"
+          ],
+          "properties": {
+            "through_version": {
+              "const": "0.1.0"
+            },
+            "license": {
+              "const": "CC-BY-4.0"
+            },
+            "branch": {
+              "const": "legacy/v0.1.0-cc-by-4.0"
+            },
+            "commit": {
+              "const": "ea8013071844b59cecec25f3270d78c9c1652450"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
     },
     "release_state": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "last_declared_version",
+        "last_declared_release_purpose",
+        "development_state",
+        "new_release_declared"
+      ],
+      "properties": {
+        "last_declared_version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+        },
+        "last_declared_release_purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next_planned_version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+        },
+        "development_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "new_release_declared": {
+          "type": "boolean"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "new_release_declared": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "development_state": {
+                "const": "RELEASED"
+              }
+            }
+          },
+          "else": {
+            "required": [
+              "next_planned_version"
+            ],
+            "properties": {
+              "development_state": {
+                "pattern": "^UNRELEASED_POST_V.+_HARDENING$"
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
     },
     "method_selection": {
       "const": "ADOPT -> PROFILE -> EXTEND -> BUILD"
+    },
+    "license": {
+      "const": "Proprietary-All-Rights-Reserved"
+    },
+    "future_facing_identity_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "future_facing_forbidden_identity_strings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
     }
   },
   "additionalProperties": true

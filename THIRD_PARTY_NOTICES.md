@@ -30,4 +30,11 @@ Sources, standards, papers, publications, websites, and quoted materials referen
 
 | Item | Owner | Version/date | License/terms | Use in project | Redistribution status | Notes |
 |---|---|---|---|---|---|---|
-| | | | | | | |
+| [jsonschema](https://github.com/python-jsonschema/jsonschema) | Python JSON Schema contributors; see upstream license | 4.26.0 | MIT | Development and CI JSON Schema validation | Installed separately; no package source is vendored | Retain the upstream copyright and permission notice if redistributed. |
+| [referencing](https://github.com/python-jsonschema/referencing) | Python JSON Schema contributors; see upstream license | 0.37.0 | MIT | Local schema reference handling with remote retrieval disabled | Installed separately; no package source is vendored | Retain the upstream copyright and permission notice if redistributed. |
+| [attrs](https://github.com/python-attrs/attrs) | Upstream contributors; see upstream license | 26.1.0 | MIT | Transitive validation dependency | Installed separately; no package source is vendored | Retain the upstream copyright and permission notice if redistributed. |
+| [jsonschema-specifications](https://github.com/python-jsonschema/jsonschema-specifications) | Python JSON Schema contributors; see upstream license | 2025.9.1 | MIT | Transitive validation dependency | Installed separately; no package source is vendored | Retain the upstream copyright and permission notice if redistributed. |
+| [rpds-py](https://github.com/crate-py/rpds) | Upstream contributors; see upstream license | 2026.9.1 | MIT | Transitive validation dependency | Installed separately; no package source is vendored | Retain the upstream copyright and permission notice if redistributed. |
+| [typing_extensions](https://github.com/python/typing_extensions) | Python Software Foundation and contributors; see upstream license | 4.16.0 | PSF-2.0 | Transitive validation dependency | Installed separately; no package source is vendored | Retain the upstream license and applicable notices if redistributed. |
+
+These package versions are pinned in `requirements-dev.txt` for maintainers and CI. Reading and using the research documents does not require installing them. Their upstream licenses govern the packages; the packages are not included in the repository's source archive. This register records their use and does not replace their complete license terms.

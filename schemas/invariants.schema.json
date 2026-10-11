@@ -35,7 +35,10 @@
             "minLength": 1
           },
           "operator_override": {
-            "type": "string"
+            "enum": [
+              "REQUIRES_PARENT_ARCHITECTURE_REVIEW",
+              "NOT_APPLICABLE"
+            ]
           }
         },
         "additionalProperties": false

@@ -45,7 +45,7 @@
   },
   "upstream": {
     "compatibility_state": "UNKNOWN",
-    "synchronization_state": "PINNED",
+    "synchronization_state": "UNKNOWN",
     "last_parent_review_version": "",
     "last_parent_review_commit": "",
     "known_incompatibilities": []

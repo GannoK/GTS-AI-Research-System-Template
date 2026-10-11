@@ -4,12 +4,12 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import re
 import subprocess
 from pathlib import Path
 
+from parent_snapshot import CANONICAL_NAME, TEMPLATE_ID, validate_parent_pin
+
 ROOT = Path(__file__).resolve().parents[1]
-SHA40 = re.compile(r"^[0-9a-f]{40}$")
 
 
 def sha256(path: Path) -> str:
@@ -26,33 +26,50 @@ def main() -> int:
     parser.add_argument("--parent-version", required=True)
     parser.add_argument("--parent-tag", required=True)
     parser.add_argument("--parent-commit")
-    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True, help="manifest path in a derivative workspace outside the parent checkout")
     args = parser.parse_args()
 
+    if args.output.resolve().is_relative_to(ROOT.resolve()):
+        print("FAIL: derivative output must be outside the parent checkout")
+        return 1
+    for key in ("derivative_id", "name", "domain", "owning_project", "repository"):
+        if not getattr(args, key).strip():
+            print(f"FAIL: derivative {key} must not be empty")
+            return 1
     commit = args.parent_commit
     if not commit:
         try:
-            commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
-        except Exception:
-            raise SystemExit("parent commit is required when git identity cannot be derived")
-    if not SHA40.fullmatch(commit):
-        raise SystemExit("parent commit must be a 40-character lowercase SHA")
-    if args.parent_tag.upper().startswith("UNRELEASED"):
-        raise SystemExit("qualified derivative instantiation requires an exact parent release tag")
+            commit = subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True, stderr=subprocess.PIPE
+            ).strip()
+        except (OSError, subprocess.CalledProcessError):
+            print("FAIL: a checked-out parent git identity is required")
+            return 1
 
-    invariants = json.loads((ROOT / "INVARIANTS.json").read_text(encoding="utf-8"))
-    manifest = {
-        "schema_version": "1.0",
-        "manifest_id": f"{args.derivative_id}-MUTATION-MANIFEST",
-        "parent": {
-            "template_id": "GTS-AIRST",
-            "canonical_name": "GTS AI Research System Template",
+    try:
+        parent = {
+            "template_id": TEMPLATE_ID,
+            "canonical_name": CANONICAL_NAME,
             "release_version": args.parent_version,
             "tag": args.parent_tag,
             "commit": commit,
             "repository_manifest_sha256": sha256(ROOT / "MANIFEST_SHA256.txt"),
             "component_registry_sha256": sha256(ROOT / "COMPONENT_REGISTRY.json"),
-        },
+        }
+    except OSError as exc:
+        print(f"FAIL: cannot read the parent snapshot: {exc}")
+        return 1
+    errors = validate_parent_pin(parent, root=ROOT)
+    if errors:
+        for error in errors:
+            print(f"FAIL: {error}")
+        return 1
+
+    invariants = json.loads((ROOT / "INVARIANTS.json").read_text(encoding="utf-8"))
+    manifest = {
+        "schema_version": "1.0",
+        "manifest_id": f"{args.derivative_id}-MUTATION-MANIFEST",
+        "parent": parent,
         "derivative": {
             "derivative_id": args.derivative_id,
             "name": args.name,
@@ -68,7 +85,7 @@ def main() -> int:
         "qualification": {
             "state": "UNQUALIFIED",
             "bundle_ref": "",
-            "qualified_parent_commit": commit,
+            "qualified_parent_commit": "",
             "last_reviewed_at": "",
         },
         "upstream": {

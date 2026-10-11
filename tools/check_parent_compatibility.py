@@ -2,22 +2,22 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import subprocess
 from pathlib import Path
 
+from airst_validate import ValidationError, validate_derivative_manifest
+from resolve_derivative import resolve_components
+
 ROOT = Path(__file__).resolve().parents[1]
-
-
-def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def git_head() -> str | None:
     try:
-        return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
-    except Exception:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True, stderr=subprocess.PIPE
+        ).strip()
+    except (OSError, subprocess.CalledProcessError):
         return None
 
 
@@ -27,29 +27,43 @@ def main() -> int:
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
 
-    data = json.loads(args.manifest.read_text(encoding="utf-8"))
-    parent = data["parent"]
-    reasons=[]
-    if parent.get("repository_manifest_sha256") != sha256(ROOT / "MANIFEST_SHA256.txt"):
-        reasons.append("repository manifest hash differs from pinned parent")
-    if parent.get("component_registry_sha256") != sha256(ROOT / "COMPONENT_REGISTRY.json"):
-        reasons.append("component registry hash differs from pinned parent")
-    head = git_head()
-    if head and parent.get("commit") != head:
-        reasons.append("local parent commit differs from pinned parent commit")
+    data: dict = {}
+    try:
+        reasons = validate_derivative_manifest(args.manifest)
+        loaded = json.loads(args.manifest.read_text(encoding="utf-8"))
+        if isinstance(loaded, dict):
+            data = loaded
+    except (OSError, ValueError, ValidationError) as exc:
+        reasons = [f"cannot validate derivative manifest: {exc}"]
+    pin_verified = not reasons
+    unresolved: list[str] = []
+    if pin_verified:
+        registry = json.loads((ROOT / "COMPONENT_REGISTRY.json").read_text(encoding="utf-8"))
+        _, unresolved = resolve_components(data, registry)
+        reasons.extend(f"component requires an explicit permitted mutation: {cid}" for cid in unresolved)
 
-    if reasons:
-        compatibility="REVIEW_REQUIRED"
-        synchronization="UPDATE_AVAILABLE"
-    else:
-        compatibility="COMPATIBLE"
-        synchronization="PINNED"
-    payload={"compatibility_state":compatibility,"synchronization_state":synchronization,"reasons":reasons,"derived_git_head":head}
+    compatibility = "REVIEW_REQUIRED" if reasons else "COMPATIBLE"
+    qualification = data.get("qualification", {})
+    if not isinstance(qualification, dict):
+        qualification = {}
+    payload = {
+        "compatibility_state": compatibility,
+        "synchronization_state": "PINNED" if pin_verified else "UNKNOWN",
+        "parent_pin_state": "VERIFIED" if pin_verified else "UNVERIFIED",
+        "comparison_scope": "EXACT_PARENT_PIN_AND_DECLARED_MUTATION_STRUCTURE",
+        "qualification_state": qualification.get("state", "UNKNOWN"),
+        "qualification_assessed": False,
+        "unresolved_components": unresolved,
+        "reasons": reasons,
+        "derived_git_head": git_head(),
+    }
     if args.json:
         print(json.dumps(payload,indent=2))
     else:
         print(f"COMPATIBILITY={compatibility}")
-        print(f"SYNCHRONIZATION={synchronization}")
+        print(f"SYNCHRONIZATION={payload['synchronization_state']}")
+        print(f"PARENT_PIN={payload['parent_pin_state']}")
+        print(f"QUALIFICATION={payload['qualification_state']} (not assessed by this technical compatibility check)")
         for reason in reasons:
             print(f"  {reason}")
     return 0 if compatibility=="COMPATIBLE" else 2

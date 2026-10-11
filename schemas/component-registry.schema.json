@@ -35,8 +35,115 @@
           "covered_invariants",
           "mutation_permissions",
           "qualification_controls"
-        ]
+        ],
+        "properties": {
+          "component_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "classification": {
+            "enum": [
+              "CORE_INVARIANT",
+              "GENERIC_REUSABLE_MECHANISM",
+              "DEFAULT_IMPLEMENTATION",
+              "DOMAIN_EXTENSION_POINT",
+              "EXAMPLE_ONLY",
+              "HISTORICAL_LEGACY"
+            ]
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_paths": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true,
+            "minItems": 0
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true,
+            "minItems": 0
+          },
+          "covered_invariants": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^AIRST-INV-[0-9]{3}$"
+            },
+            "uniqueItems": true,
+            "minItems": 0
+          },
+          "mutation_permissions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "enum": [
+                "PRESERVE",
+                "SPECIALIZE",
+                "EXTEND",
+                "REPLACE",
+                "REMOVE"
+              ]
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          },
+          "qualification_controls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          }
+        },
+        "additionalProperties": false
       }
+    },
+    "classifications": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "enum": [
+          "CORE_INVARIANT",
+          "GENERIC_REUSABLE_MECHANISM",
+          "DEFAULT_IMPLEMENTATION",
+          "DOMAIN_EXTENSION_POINT",
+          "EXAMPLE_ONLY",
+          "HISTORICAL_LEGACY"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 6
+    },
+    "mutation_actions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "enum": [
+          "PRESERVE",
+          "SPECIALIZE",
+          "EXTEND",
+          "REPLACE",
+          "REMOVE"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 5
     }
   },
   "additionalProperties": true

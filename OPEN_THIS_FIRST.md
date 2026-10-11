@@ -1,6 +1,6 @@
 # Open this first
 
-GTS AI Research System Template (GTS-AIRST) is the reusable parent template for GTS domain-specialized AI-assisted research systems.
+GTS AI Research System Template (GTS-AIRST) provides guides, prompts, templates, and checks for recording what the evidence supports. You can use it for one research project or, with the required authorization, adapt it into a reusable template for a particular field.
 
 Start with these rules:
 
@@ -15,6 +15,8 @@ Start with these rules:
 9. Higher-consequence questions require stronger methods and often qualified human expertise.
 10. Consequential decisions remain with the responsible operator or authority.
 
-For ordinary research use, begin with 02_RESEARCH_KNOWLEDGE_TEMPLATE/00_INDEX_AND_ROUTING.md.
+For your first research project, follow the [setup guide](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md), [quick start](00_QUICK_START/QUICK_START_ONE_PAGE.md), and [worked example](09_EXAMPLES/01_FIRST_RESEARCH_PROJECT.md). The [research index](02_RESEARCH_KNOWLEDGE_TEMPLATE/00_INDEX_AND_ROUTING.md) identifies the records to fill in.
 
-For a GTS domain derivative, do not copy main as an untracked fork. Use a qualified, exact parent release/tag/commit and DERIVATIVE_CONTRACT.md plus the derivative mutation manifest.
+For a reusable domain template, read the [derivative contract](DERIVATIVE_CONTRACT.md). A qualified derivative requires an existing released parent with a matching version, tag, checked-out commit, and hashes. Unspecified domain requirements remain unresolved draft work.
+
+The last declared release is v0.2.1. This checkout contains unreleased hardening planned for v0.3.0; it cannot yet serve as a released, qualified derivative parent. See [canonical metadata](AIRST_METADATA.json).
