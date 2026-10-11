@@ -6,8 +6,6 @@ Previously titled **AI-Powered Research Starter Kit**.
 
 Use it to organize research with an AI assistant or to follow the same process yourself. You bring the question and the source material. The kit provides guides, reusable instructions, templates, and review checklists.
 
-> **Licensing notice:** Current v0.2.0+ distributions are proprietary and all rights are reserved. Earlier v0.1.0 distributions were released under CC BY 4.0 and those historical grants are not revoked. See [LICENSE](LICENSE) and [LICENSE_HISTORY.md](LICENSE_HISTORY.md).
-
 **Start here:** [Setup](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md) · [Quick start](00_QUICK_START/QUICK_START_ONE_PAGE.md) · [Worked example](09_EXAMPLES/01_FIRST_RESEARCH_PROJECT.md) · [Glossary](10_REFERENCE/01_GLOSSARY.md)
 
 ## What this gives you
