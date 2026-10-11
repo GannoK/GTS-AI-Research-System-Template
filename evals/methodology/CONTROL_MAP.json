@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "controls": {
+    "MV-PROVENANCE": [
+      "AR-001",
+      "AR-004",
+      "AR-008"
+    ],
+    "MV-TRACEABILITY": [
+      "AR-004",
+      "AR-007"
+    ],
+    "MV-CONTRADICTION": [
+      "AR-007"
+    ],
+    "MV-UNCERTAINTY": [
+      "AR-010"
+    ],
+    "MV-FALSIFICATION": [
+      "AR-006",
+      "AR-007"
+    ],
+    "MV-SOURCE-AUTHORITY": [
+      "AR-005"
+    ],
+    "MV-FRESHNESS-RETRACTION": [
+      "AR-004",
+      "AR-005"
+    ],
+    "MV-SOURCE-DEPENDENCE": [
+      "AR-002",
+      "AR-009"
+    ],
+    "MV-CAUSAL-OVERREACH": [
+      "AR-006"
+    ],
+    "MV-PROMPT-INJECTION": [
+      "AR-003"
+    ],
+    "MV-SCOPE-EXPANSION": [
+      "AR-011"
+    ],
+    "MV-AUTHORITY-ESCALATION": [
+      "AR-012"
+    ],
+    "MV-TOOL-FAILURE": [
+      "AR-013"
+    ],
+    "DQ-DERIVATIVE-MUTATION": [
+      "AR-014"
+    ]
+  },
+  "ci_interpretation": "CI validates the executable fixture contract and deterministic evaluator. Hybrid semantic behavior remains MANUAL until evaluated against a concrete research-system output."
+}

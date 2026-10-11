@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guildtechnologysolutions.com/schemas/airst-derivative-mutation-manifest.schema.json",
+  "title": "GTS-AIRST Derivative Mutation Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "manifest_id",
+    "parent",
+    "derivative",
+    "inheritance_policy",
+    "preserved_invariants",
+    "mutations",
+    "domain_extensions",
+    "qualification",
+    "upstream",
+    "history"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "manifest_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parent": {
+      "type": "object",
+      "required": [
+        "template_id",
+        "canonical_name",
+        "release_version",
+        "tag",
+        "commit",
+        "repository_manifest_sha256",
+        "component_registry_sha256"
+      ],
+      "properties": {
+        "template_id": {
+          "const": "GTS-AIRST"
+        },
+        "canonical_name": {
+          "const": "GTS AI Research System Template"
+        },
+        "release_version": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        },
+        "repository_manifest_sha256": {
+          "type": "string"
+        },
+        "component_registry_sha256": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "derivative": {
+      "type": "object",
+      "required": [
+        "derivative_id",
+        "name",
+        "domain",
+        "owning_project",
+        "repository",
+        "development_state"
+      ],
+      "properties": {
+        "derivative_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "owning_project": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "development_state": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "inheritance_policy": {
+      "const": "PRESERVE_UNLESS_DECLARED"
+    },
+    "preserved_invariants": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^AIRST-INV-[0-9]{3}$"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "mutations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "component_id",
+          "mutation",
+          "rationale",
+          "covered_invariants",
+          "invariant_impact",
+          "coverage_evidence",
+          "qualification_controls",
+          "decision_refs"
+        ],
+        "properties": {
+          "component_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mutation": {
+            "enum": [
+              "PRESERVE",
+              "SPECIALIZE",
+              "EXTEND",
+              "REPLACE",
+              "REMOVE"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "covered_invariants": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^AIRST-INV-[0-9]{3}$"
+            },
+            "uniqueItems": true,
+            "minItems": 0
+          },
+          "invariant_impact": {
+            "type": "string",
+            "minLength": 1
+          },
+          "coverage_evidence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true,
+            "minItems": 0
+          },
+          "qualification_controls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true,
+            "minItems": 0
+          },
+          "decision_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true,
+            "minItems": 0
+          }
+        }
+      }
+    },
+    "domain_extensions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "qualification": {
+      "type": "object",
+      "required": [
+        "state",
+        "bundle_ref",
+        "qualified_parent_commit",
+        "last_reviewed_at"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "UNQUALIFIED",
+            "IN_REVIEW",
+            "QUALIFIED",
+            "QUALIFIED_WITH_WAIVERS",
+            "FAILED",
+            "SUPERSEDED",
+            "INVALIDATED"
+          ]
+        },
+        "bundle_ref": {
+          "type": "string"
+        },
+        "qualified_parent_commit": {
+          "type": "string"
+        },
+        "last_reviewed_at": {
+          "type": "string"
+        }
+      }
+    },
+    "upstream": {
+      "type": "object",
+      "required": [
+        "compatibility_state",
+        "synchronization_state",
+        "last_parent_review_version",
+        "last_parent_review_commit",
+        "known_incompatibilities"
+      ],
+      "properties": {
+        "compatibility_state": {
+          "enum": [
+            "COMPATIBLE",
+            "CONDITIONALLY_COMPATIBLE",
+            "INCOMPATIBLE",
+            "REVIEW_REQUIRED",
+            "UNKNOWN"
+          ]
+        },
+        "synchronization_state": {
+          "enum": [
+            "PINNED",
+            "UPDATE_AVAILABLE",
+            "UPDATE_REVIEW_IN_PROGRESS",
+            "DIVERGED",
+            "SUPERSEDED",
+            "UNKNOWN"
+          ]
+        },
+        "last_parent_review_version": {
+          "type": "string"
+        },
+        "last_parent_review_commit": {
+          "type": "string"
+        },
+        "known_incompatibilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 0
+        }
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "revision",
+          "change",
+          "decision_ref"
+        ],
+        "properties": {
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "change": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decision_ref": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

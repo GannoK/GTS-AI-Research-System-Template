@@ -2,7 +2,7 @@
 
 Copyright © 2026 Kyle Gannon. All Rights Reserved.
 
-The **AI-Powered Research Starter Kit**, including its original research methodology, documentation, prompts, templates, examples, workflow structures, tools, and other copyrightable material authored by Kyle Gannon, is proprietary intellectual property in current v0.2.0+ distributions unless expressly identified otherwise.
+The **GTS AI Research System Template (GTS-AIRST)**, historically distributed as the **AI-Powered Research Starter Kit**, including its original research methodology, documentation, prompts, templates, examples, workflow structures, tools, and other copyrightable material authored by Kyle Gannon, is proprietary intellectual property in current v0.2.0+ distributions unless expressly identified otherwise.
 
 Ownership claims are subject to:
 - valid rights previously granted for historical copies;

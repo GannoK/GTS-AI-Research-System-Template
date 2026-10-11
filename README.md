@@ -135,6 +135,14 @@ A topic-specific kit should identify the parent version it uses and explain its 
 
 See [Setup and common questions](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md) and [AI and RAG research guidance](06_AI_AND_RAG_RESEARCH/02_RAG_FOR_RESEARCH.md).
 
+## For derivative creators
+
+A **GTS-AIRST derivative** is a version-pinned adaptation of this template for a particular field. It adds domain rules, source requirements, and checks while preserving the parent research principles.
+
+If you are creating a reusable domain template, follow the [derivative setup](INSTALL_INTO_YOUR_RESEARCH_WORKFLOW.md#for-derivative-creators) and [derivative contract](DERIVATIVE_CONTRACT.md). These describe parent version pins, declared changes, unresolved domain requirements, and qualification. For an ordinary research project, continue with the quick start above.
+
+The current hardening checkout is an unreleased candidate. Its automated checks do not make it a released, qualified parent for a derivative.
+
 ## Find the right guide
 
 | I want to… | Open |
@@ -252,6 +260,8 @@ A useful operating principle for AI-assisted research is:
 **v0.2.1 — Beginner Documentation and Onboarding**
 
 This version adds plain-language AI explanations, clearer getting-started guidance, and a complete worked research example. The research workflow, template fields, rigor profiles, and decision boundaries remain unchanged. See the [v0.2.1 release notes](RELEASE_NOTES_v0.2.1.md) and [changelog](CHANGELOG.md).
+
+**Development state:** v0.2.1 remains the last declared release. This checkout adds **unreleased post-v0.2.1 hardening**, with **v0.3.0 planned next**. No v0.3.0 release has been declared or published. For unreleased work, record the exact commit as well as the release base. See [canonical metadata](AIRST_METADATA.json), [hardening and integration changes](CHANGELOG.md), and the [PR #9 reconciliation record](HARDENING/PR-9-RECONCILIATION-2026-10-11.md).
 
 The proprietary licensing baseline established in v0.2.0 continues to apply. See [LICENSE_HISTORY.md](LICENSE_HISTORY.md).
 

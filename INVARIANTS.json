@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "template_id": "GTS-AIRST",
+  "invariants": [
+    {
+      "id": "AIRST-INV-001",
+      "statement": "Model output is not authoritative evidence for external factual claims merely because it was generated, cited, fluent, or confident. Recorded model output may serve as observational evidence when the model itself is the object of study and provenance is preserved.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-002",
+      "statement": "Every material claim remains traceable to evidence and source identity.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-003",
+      "statement": "Authoritative and primary sources are preferred when appropriate; secondary summaries do not silently replace them.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-004",
+      "statement": "Observation, inference, finding, recommendation, and decision remain semantically distinct.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-005",
+      "statement": "Contradictory evidence is preserved and addressed rather than discarded.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-006",
+      "statement": "Uncertainty, limitations, and unresolved ambiguity remain explicit.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-007",
+      "statement": "Material hypotheses are subjected to contradiction and falsification effort.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-008",
+      "statement": "Source freshness, correction, retraction, and supersession state are tracked where material.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-009",
+      "statement": "Research provenance and material transformations remain recoverable.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-010",
+      "statement": "Verification is required before promotion beyond what available evidence demonstrates.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-011",
+      "statement": "Consequential decisions remain under the responsible operator or authority.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-012",
+      "statement": "Research findings do not silently become canonical architecture, policy, or production state.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-013",
+      "statement": "Change history and template/derivative lineage remain traceable.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "AIRST-INV-014",
+      "statement": "Reproducibility is preserved where practical and proportional to consequence.",
+      "operator_override": "REQUIRES_PARENT_ARCHITECTURE_REVIEW"
+    }
+  ]
+}

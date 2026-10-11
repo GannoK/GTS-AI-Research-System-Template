@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://guildtechnologysolutions.com/schemas/research-assurance.schema.json",
-  "title": "Research Starter Kit Assurance Manifest",
+  "title": "GTS-AIRST Assurance Manifest",
   "type": "object",
   "required": [
     "format_version",
@@ -9,6 +9,7 @@
     "project_type",
     "assurance_profile",
     "result_states",
+    "control_domains",
     "required_checks",
     "manual_controls",
     "release_requirements"
@@ -18,11 +19,10 @@
       "type": "string"
     },
     "format_version": {
-      "type": "string"
+      "const": "1.0"
     },
     "project": {
-      "type": "string",
-      "minLength": 1
+      "const": "GTS-AIRST"
     },
     "project_type": {
       "type": "string",
@@ -35,26 +35,96 @@
     "result_states": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1,
+        "enum": [
+          "PASS",
+          "FAIL",
+          "MANUAL",
+          "N/A",
+          "UNKNOWN",
+          "WAIVED"
+        ]
       },
-      "uniqueItems": true
+      "uniqueItems": true,
+      "minItems": 6
+    },
+    "control_domains": {
+      "type": "object",
+      "required": [
+        "RI",
+        "MV",
+        "RO",
+        "DQ"
+      ],
+      "properties": {
+        "RI": {
+          "type": "string",
+          "minLength": 1
+        },
+        "MV": {
+          "type": "string",
+          "minLength": 1
+        },
+        "RO": {
+          "type": "string",
+          "minLength": 1
+        },
+        "DQ": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
     },
     "required_checks": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^(RI|MV|RO|DQ)-[A-Z0-9-]+$"
       },
-      "uniqueItems": true
+      "uniqueItems": true,
+      "minItems": 1
     },
     "manual_controls": {
       "type": "array",
       "items": {
-        "type": "string"
-      },
-      "uniqueItems": true
+        "type": "object",
+        "required": [
+          "control_id",
+          "description"
+        ],
+        "properties": {
+          "control_id": {
+            "type": "string",
+            "pattern": "^(RI|MV|RO|DQ)-[A-Z0-9-]+$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
     },
     "release_requirements": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "automated_failures_allowed",
+        "unknown_requires_review",
+        "waivers_require_expiration"
+      ],
+      "properties": {
+        "automated_failures_allowed": {
+          "const": 0
+        },
+        "unknown_requires_review": {
+          "const": true
+        },
+        "waivers_require_expiration": {
+          "const": true
+        }
+      },
+      "additionalProperties": true
     }
   },
   "additionalProperties": true

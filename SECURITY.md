@@ -1,19 +1,25 @@
-# Security
+# GTS-AIRST Security
+
+## Security model
+
+Prefer allowlists, schemas, immutable pins, hashes, validators, evals, least privilege, explicit authority boundaries, and deterministic stop/failure states over blacklist-first controls.
+
+Capabilities are deny-by-default: a Skill, tool, plugin, model, or agent does not acquire authority merely because it can technically perform an action. Read authority and write authority are distinct.
+
+Retrieved pages, documents, comments, and other external content are untrusted data. They must not override the research method, system constraints, or responsible operator.
 
 ## Supported versions
 
-Security fixes are applied to the current maintained release and the default branch. Older snapshots may not receive backports unless explicitly stated in release notes.
+Security fixes are applied to the current maintained release and default branch. Historical snapshots remain evidence and may not receive backports unless explicitly stated.
+
+## Secrets and credentials
+
+Do not commit secrets, credentials, API keys, confidential research data, or private personal information. Repository validation includes conservative secret-pattern checks, but those checks supplement rather than replace proper secret management.
 
 ## Reporting
 
-Do not publish secrets, private personal information, confidential research data, credentials, API keys, or material that should not be public.
+If a security problem affects this repository, report it privately through GitHub's supported security-reporting mechanism when available. Non-sensitive research-safety failures such as fabricated citations, prompt injection, provenance loss, unsafe authority escalation, or integrity-check bypasses may be reported through normal issue channels.
 
-If a security problem affects this repository, report it privately through GitHub's supported security-reporting mechanism when available.
+## Completion rule
 
-Research safety problems—such as fabricated citations, unsafe execution instructions, prompt injection, provenance loss, misleading security guidance, or integrity-check bypasses—may also be reported as issues when no sensitive information is involved.
-
-## Handling states
-
-A reported issue may be tracked as `RECEIVED`, `TRIAGED`, `CONFIRMED`, `REMEDIATION_IN_PROGRESS`, `RESOLVED`, or `NOT_APPLICABLE`. These states describe workflow only; they do not guarantee a fixed response-time SLA.
-
-A fix is not complete merely because text changed. Relevant behavior, evidence, and regressions should be considered before closure.
+A fix is not complete merely because files changed. Relevant behavior, tests/evals, evidence, unresolved controls, and regression risk must be accounted for before verification.

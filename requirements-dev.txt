@@ -1,0 +1,8 @@
+# Repository validation tools; ordinary use of the research documents needs no Python dependencies.
+jsonschema==4.26.0
+referencing==0.37.0
+# Pin the reviewed validation environment, including transitive dependencies.
+attrs==26.1.0
+jsonschema-specifications==2025.9.1
+rpds-py==2026.9.1
+typing_extensions==4.16.0

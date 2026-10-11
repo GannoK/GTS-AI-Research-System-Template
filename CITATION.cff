@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "GTS AI Research System Template"
-message: "If you are authorized to use or reference this project, cite the identified version and repository."
+message: "If authorized to use or reference this project, cite the declared release used; for unreleased development state, cite the exact repository commit. The version and release date below identify the last declared release."
 type: software
 authors:
   - family-names: "Gannon"

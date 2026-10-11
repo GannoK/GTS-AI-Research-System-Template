@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — planned v0.3.0 GTS-AIRST hardening
+
+- Added canonical identity and lineage metadata, invariant and component registries, and historical-file protection.
+- Added parent/derivative contracts, mutation manifests, compatibility tooling, and explicit qualification controls for domain adaptations.
+- Separated repository integrity, methodology validation, research-output qualification, and derivative qualification.
+- Added methodology evaluation fixtures, qualification-candidate bundles, and handoff helpers. Fixture checks and human review remain distinct.
+- Reconciled PR #9 with v0.2.1, preserving the approved beginner README, setup path, glossary, worked example, release notes, and historical licensing records.
+- Added maintainer dependency setup and a separate path for derivative creators. Qualified derivatives require a released, exactly pinned parent; unspecified domain placeholders remain unresolved draft work.
+- v0.2.1 remains the last declared release. v0.3.0 is a planned next version, not a declared or published release. See the [repair and integration record](HARDENING/PR-9-RECONCILIATION-2026-10-11.md).
+
 ## v0.2.1 — Beginner Documentation and Onboarding
 
 - Added plain-language explanations of LLMs, AI assistants, agents, prompts, tools, workflows, context, hallucinations, and RAG.

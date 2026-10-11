@@ -1,6 +1,12 @@
 {
   "name": "GTS AI Research System Template",
+  "template_id": "GTS-AIRST",
+  "canonical_metadata": "AIRST_METADATA.json",
   "version": "0.2.1",
+  "version_semantics": "last-declared-release-base",
+  "next_planned_version": "0.3.0",
+  "development_state": "UNRELEASED_POST_V0_2_1_HARDENING",
+  "new_release_declared": false,
   "status": "proprietary-baseline",
   "repository": "https://github.com/GannoK/GTS-AI-Research-System-Template",
   "license": "Proprietary-All-Rights-Reserved",

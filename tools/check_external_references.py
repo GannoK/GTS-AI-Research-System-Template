@@ -25,7 +25,7 @@ def iter_urls() -> dict[str, set[str]]:
 
 
 def check(url: str) -> tuple[str, str]:
-    headers = {"User-Agent": "Guild-Research-Starter-Kit-reference-audit/1.0"}
+    headers = {"User-Agent": "GTS-AIRST-reference-audit/1.0"}
     request = urllib.request.Request(url, headers=headers, method="HEAD")
     try:
         with urllib.request.urlopen(request, timeout=TIMEOUT) as response:

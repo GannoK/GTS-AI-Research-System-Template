@@ -1,9 +1,9 @@
 {
   "$schema": "schemas/assurance.schema.json",
   "format_version": "1.0",
-  "project": "AI-Powered-Research-Starter-kit",
-  "project_type": "research-methodology-starter-kit",
-  "assurance_profile": "research-integrity-baseline",
+  "project": "GTS-AIRST",
+  "project_type": "ai-research-system-template",
+  "assurance_profile": "airst-parent-hardening",
   "result_states": [
     "PASS",
     "FAIL",
@@ -12,20 +12,64 @@
     "UNKNOWN",
     "WAIVED"
   ],
+  "control_domains": {
+    "RI": "repository integrity",
+    "MV": "methodology validation",
+    "RO": "research-output qualification",
+    "DQ": "derivative qualification"
+  },
   "required_checks": [
-    "repository_manifest_integrity",
-    "local_link_integrity",
-    "pinned_github_actions",
-    "least_privilege_workflow_permissions",
-    "research_provenance_templates",
-    "governance_presence"
+    "RI-MANIFEST-INTEGRITY",
+    "RI-LOCAL-LINK-INTEGRITY",
+    "RI-IDENTITY",
+    "RI-SCHEMAS",
+    "RI-HISTORICAL-NO-TOUCH",
+    "RI-WORKFLOW-PINS",
+    "RI-LEAST-PRIVILEGE",
+    "RI-SECRET-EXPOSURE",
+    "MV-EVAL-HARNESS",
+    "MV-PROVENANCE",
+    "MV-TRACEABILITY",
+    "MV-CONTRADICTION",
+    "MV-UNCERTAINTY",
+    "MV-FALSIFICATION",
+    "MV-SOURCE-AUTHORITY",
+    "MV-FRESHNESS-RETRACTION",
+    "MV-SOURCE-DEPENDENCE",
+    "MV-CAUSAL-OVERREACH",
+    "MV-PROMPT-INJECTION",
+    "MV-SCOPE-EXPANSION",
+    "MV-AUTHORITY-ESCALATION",
+    "MV-TOOL-FAILURE",
+    "DQ-INVARIANTS",
+    "DQ-COMPONENT-REGISTRY",
+    "DQ-DERIVATIVE-MUTATION"
   ],
   "manual_controls": [
-    "methodological_validity",
-    "source_quality_judgment",
-    "claim_sufficiency",
-    "conflict_resolution",
-    "ethical_and_legal_review"
+    {
+      "control_id": "MV-METHODOLOGICAL-VALIDITY",
+      "description": "Overall methodological validity remains a human research-method judgment."
+    },
+    {
+      "control_id": "MV-HYBRID-SEMANTIC-REVIEW",
+      "description": "Hybrid eval cases require evidence-grounded semantic review against concrete research-system outputs."
+    },
+    {
+      "control_id": "RO-SOURCE-QUALITY-JUDGMENT",
+      "description": "Source authority and quality can require qualified human/domain judgment."
+    },
+    {
+      "control_id": "RO-CLAIM-SUFFICIENCY",
+      "description": "Material claim sufficiency can require human/domain review."
+    },
+    {
+      "control_id": "RO-ETHICAL-LEGAL-REVIEW",
+      "description": "Ethical and legal review remains manual where applicable."
+    },
+    {
+      "control_id": "DQ-DOMAIN-AUTHORITY-REVIEW",
+      "description": "A derivative domain authority profile requires review before qualification."
+    }
   ],
   "release_requirements": {
     "automated_failures_allowed": 0,

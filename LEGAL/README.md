@@ -1,6 +1,6 @@
 # Legal and IP Governance
 
-This directory contains governance policies and drafting templates for the AI-Powered Research Starter Kit.
+This directory contains governance policies and drafting templates for the GTS AI Research System Template (GTS-AIRST).
 
 ## Active governance
 

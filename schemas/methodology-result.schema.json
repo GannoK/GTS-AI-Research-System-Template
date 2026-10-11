@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guildtechnologysolutions.com/schemas/methodology-result.schema.json",
+  "title": "Traceable supplied methodology result",
+  "type": "object",
+  "required": ["eval_id", "system_id", "run_id", "result", "evidence"],
+  "properties": {
+    "eval_id": {"type": "string", "pattern": "^AR-00[1-9]$|^AR-01[0-4]$"},
+    "system_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "result": {"type": "object"},
+    "evidence": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

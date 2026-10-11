@@ -114,4 +114,45 @@ Local inference means model computation happens on a machine you control. Other 
 
 Use the [glossary](10_REFERENCE/01_GLOSSARY.md), then return to the [quick start](00_QUICK_START/QUICK_START_ONE_PAGE.md).
 
+## For derivative creators
+
+Use the [derivative contract](DERIVATIVE_CONTRACT.md) when preparing a reusable domain template. An ordinary project can continue to use the workspace instructions above.
+
+Keep the checked-out parent unchanged. Write derivative manifests and resolution outputs in a separate derivative workspace outside the parent checkout; `--output` paths inside the parent are rejected.
+
+1. Choose a released, qualified parent and check out that exact revision. The parent version, existing release tag, commit, repository-manifest hash, and component-registry hash must agree.
+2. Record the parent in a [derivative mutation manifest](07_TEMPLATES/13_DERIVATIVE_MUTATION_MANIFEST_TEMPLATE.json). A manifest lists the deliberate changes to inherited components.
+3. Declare the domain-specific changes and the evidence that the parent research principles still hold. Generic domain placeholders left unspecified remain unresolved draft work.
+4. Resolve the component dispositions and complete the applicable [qualification controls](assurance/CONTROL_DOMAINS.md). Passing an integrity check or creating a manifest does not qualify a derivative.
+5. Record the responsible review disposition and track parent compatibility separately from whether the derivative has adopted newer parent changes.
+
+This unreleased hardening candidate cannot currently serve as a qualified released parent. Planning the next version as v0.3.0 does not create its tag, publish it, or qualify any derivative.
+
+## Maintainer validation setup
+
+Maintainers running the repository tools need **Python 3.11 or later** and the dependencies in [requirements-dev.txt](requirements-dev.txt). This setup is for checking or developing the template; filling in the ordinary research records requires no Python installation.
+
+Open a terminal in the repository's top-level folder, where `README.md` and `requirements-dev.txt` are located. Use the Python environment in which you intend to run the checks:
+
+```bash
+python --version
+python -m pip install -r requirements-dev.txt
+python tools/verify_repository.py
+python -m unittest discover -s tests -v
+```
+
+The first command must report Python 3.11 or later. Installing with `python -m pip` puts the declared dependencies into that Python environment. The repository uses the standard `jsonschema` validator pinned in the requirements file; missing validation dependencies must be reported rather than silently skipping checks.
+
+For an authorized qualification review, use the [hardening acceptance criteria](HARDENING/AIRST-HARDENING-001-ACCEPTANCE.json) and the [qualification domains](assurance/CONTROL_DOMAINS.md). Record unresolved or manual controls explicitly. A successful automated check is not a release decision.
+
+Generate a candidate evidence record with:
+
+```bash
+python tools/generate_qualification_bundle.py --output dist/airst-qualification-bundle.json
+```
+
+That command records the required and acceptance controls. Missing real-system results remain `UNKNOWN`, and judgments requiring human review remain `MANUAL`. The fixture self-tests check the evaluation harness; they do not demonstrate the behavior of an actual research system.
+
+If you have retained results from an actual system, supply their directory with `--results-dir PATH` to the bundle command, or run `python tools/run_methodology_evals.py --results-dir PATH --json` directly. Replace `PATH` with that directory. Each `AR-xxx.json` record identifies the evaluation, system, run, result fields, and SHA-256 references to retained evidence files inside the same directory. Missing, malformed, or mismatched evidence must remain visible in the result. Matching records and assertions provide traceability; the applicable semantic review still requires human evidence.
+
 [Back to README](README.md)
